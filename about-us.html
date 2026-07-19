@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - National Kidney Foundation - Yemen</title>
+  <meta name="description" content="Learn about the National Kidney Foundation - Yemen, our mission, vision, and values. Working to provide kidney care across Yemen.">
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=Markazi+Text:wght@500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --green: #3C6E58;
+      --green-deep: #2C5344;
+      --green-tint: #EBF2EE;
+      --red: #D8402F;
+      --red-deep: #B93325;
+      --cream: #FBF7F1;
+      --paper: #FFFFFF;
+      --ink: #2A2E2C;
+      --stone: #6E756F;
+      --line: #E4DFD5;
+      --radius-cup: 28px 28px 28px 4px;
+    }
+    *{box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{
+      margin:0;
+      background:var(--cream);
+      color:var(--ink);
+      font-family:'Inter',sans-serif;
+      -webkit-font-smoothing:antialiased;
+      transition:background .3s ease;
+    }
+    body.rtl{direction:rtl;}
+    body.rtl, body.rtl *{font-family:'Noto Sans Arabic','Inter',sans-serif;}
+    .display{font-family:'Fraunces',serif; font-optical-sizing:auto;}
+    body.rtl .display{font-family:'Markazi Text','Noto Sans Arabic',serif; font-weight:700;}
+    
+    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+      outline: 3px solid var(--green);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+    
+    a{color:inherit; text-decoration:none;}
+    img{max-width:100%;display:block;}
+    .wrap{max-width:1120px;margin:0 auto;padding:0 28px;}
+
+    header{
+      position:sticky; top:0; z-index:50;
+      background:rgba(251,247,241,.92);
+      backdrop-filter:blur(8px);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 28px; max-width:1120px; margin:0 auto;
+    }
+    .brand{display:flex; align-items:center; gap:12px;}
+    .brand img{height:46px; width:46px; border-radius:50%; object-fit:cover;}
+    .brand-name{font-size:15px; font-weight:600; line-height:1.2; max-width:260px;}
+    nav.links{display:flex; gap:26px; font-size:14.5px; font-weight:500;}
+    nav.links a{text-decoration:none; color:var(--ink); opacity:.8; transition:opacity .2s;}
+    nav.links a:hover{opacity:1;}
+    .nav-right{display:flex; align-items:center; gap:16px;}
+    .lang-toggle{
+      display:flex; border:1px solid var(--green); border-radius:999px; overflow:hidden;
+      font-size:13px; font-weight:600;
+    }
+    .lang-toggle button{
+      border:none; background:transparent; padding:7px 14px; cursor:pointer;
+      color:var(--green); transition:.2s;
+    }
+    .lang-toggle button.active{background:var(--green); color:#fff;}
+    .btn-donate{
+      background:var(--red); color:#fff; padding:9px 20px; border-radius:999px;
+      font-size:14px; font-weight:600; text-decoration:none; white-space:nowrap;
+    }
+    @media (max-width:860px){
+      nav.links{display:none;}
+      .brand-name{display:none;}
+    }
+
+    .about-hero{
+      background:var(--green-deep); 
+      color:#fff; 
+      padding:60px 0 50px;
+      position:relative;
+      overflow:hidden;
+    }
+    .about-hero::after{
+      content:''; 
+      position:absolute; 
+      width:300px; 
+      height:300px; 
+      border-radius:50%; 
+      background:rgba(255,255,255,0.05); 
+      top:-100px; 
+      right:-80px;
+    }
+    body.rtl .about-hero::after{right:auto; left:-80px;}
+    .about-hero .wrap{position:relative; z-index:1;}
+    .about-hero h1{
+      font-size:clamp(32px,4vw,48px); 
+      margin:0 0 12px; 
+      font-weight:600;
+      font-family:'Fraunces',serif;
+    }
+    body.rtl .about-hero h1{font-family:'Markazi Text',serif;}
+    .about-hero p{
+      font-size:17px; 
+      opacity:.85; 
+      max-width:600px; 
+      margin:0;
+    }
+
+    .about-section{padding:60px 0;}
+    .about-section:not(:last-child){border-bottom:1px solid var(--line);}
+    .about-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:48px;
+      align-items:center;
+    }
+    @media (max-width:860px){
+      .about-grid{grid-template-columns:1fr; gap:32px;}
+      .about-grid.reverse{display:flex; flex-direction:column-reverse;}
+    }
+    .about-content h2{
+      font-size:clamp(26px,3vw,34px);
+      margin:0 0 16px;
+      font-weight:600;
+    }
+    .about-content h2 .accent{color:var(--red);}
+    .about-content p{
+      font-size:16px;
+      line-height:1.7;
+      color:var(--stone);
+      margin:0 0 16px;
+    }
+    .about-content p:last-child{margin-bottom:0;}
+    .about-visual{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    }
+    .about-visual svg{
+      width:100%;
+      max-width:400px;
+      height:auto;
+    }
+
+    .mvv-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:24px;
+      margin-top:40px;
+    }
+    @media (max-width:860px){.mvv-grid{grid-template-columns:1fr;}}
+    .mvv-card{
+      background:var(--paper);
+      border:1px solid var(--line);
+      border-radius:var(--radius-cup);
+      padding:32px 28px;
+      text-align:center;
+      transition:transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    body.rtl .mvv-card{border-radius:28px 28px 4px 28px;}
+    .mvv-card:hover{
+      transform:translateY(-6px);
+      box-shadow:0 20px 40px -24px rgba(42,46,44,.2);
+    }
+    .mvv-card .icon{
+      width:64px;
+      height:64px;
+      margin:0 auto 16px;
+      background:var(--green-tint);
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .mvv-card .icon svg{
+      width:32px;
+      height:32px;
+      fill:var(--green);
+    }
+    .mvv-card h3{
+      margin:0 0 10px;
+      font-size:18px;
+      font-weight:600;
+    }
+    .mvv-card p{
+      margin:0;
+      font-size:14.5px;
+      color:var(--stone);
+      line-height:1.6;
+    }
+
+    .section-head{max-width:640px; margin:0 0 16px;}
+    .section-head .kicker{
+      font-size:13px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--red);
+      margin-bottom:10px; display:block;
+    }
+    body.rtl .section-head .kicker{letter-spacing:0; text-transform:none;}
+    .section-head h2{
+      font-size:clamp(26px,3.2vw,36px); margin:0 0 14px; font-weight:600;
+    }
+    .section-head p{
+      color:var(--stone); font-size:16px; line-height:1.65; margin:0;
+    }
+
+    .services-list{list-style:none;padding:0;margin:0;}
+    .services-list li{display:flex;gap:12px;align-items:flex-start;margin-bottom:12px;}
+    .services-list li .num{
+      background:var(--green);color:#fff;border-radius:50%;width:24px;height:24px;
+      display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px;font-weight:700;
+    }
+    .services-list li strong{display:block;}
+    .services-list li p{margin:2px 0 0;font-size:14px;color:var(--stone);}
+
+    .floating-wa {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: #25D366;
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      z-index: 1000;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    body.rtl .floating-wa {
+      right: auto;
+      left: 30px;
+    }
+    .floating-wa:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+    }
+    .floating-wa svg {
+      width: 35px;
+      height: 35px;
+      fill: white;
+    }
+
+    footer{
+      background:var(--green-deep); 
+      color:rgba(255,255,255,.8); 
+      padding:40px 0 28px; 
+      margin-top:20px;
+    }
+    .footer-bottom{
+      border-top:1px solid rgba(255,255,255,.15); 
+      padding-top:20px; 
+      font-size:12.5px; 
+      color:rgba(255,255,255,.5); 
+      display:flex; 
+      justify-content:space-between; 
+      flex-wrap:wrap; 
+      gap:10px;
+    }
+    .footer-links{
+      display:flex; 
+      gap:20px; 
+      flex-wrap:wrap;
+    }
+    .footer-links a{
+      color:rgba(255,255,255,.7); 
+      text-decoration:none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover{
+      color:#fff;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="brand">
+      <img src="logo.png" alt="NKF Yemen Logo">
+      <div class="brand-name" data-i18n-ar="المؤسسة الوطنية للكلى" data-i18n-en="National Kidney Foundation - Yemen">
+        National Kidney Foundation - Yemen
+      </div>
+    </div>
+    <nav class="links" aria-label="Main Navigation">
+      <a href="about-us.html" data-i18n-ar="من نحن" data-i18n-en="About Us">About Us</a>
+      <a href="index.html#programs" data-i18n-ar="برامجنا" data-i18n-en="Programs">Programs</a>
+      <a href="index.html#contact" data-i18n-ar="اتصل بنا" data-i18n-en="Contact">Contact</a>
+    </nav>
+    <div class="nav-right">
+      <div class="lang-toggle" aria-label="Language Toggle">
+        <button class="active" onclick="switchLanguage('en')" aria-label="Switch to English">EN</button>
+        <button onclick="switchLanguage('ar')" aria-label="Switch to Arabic">AR</button>
+      </div>
+      <a href="donate.html" class="btn-donate" data-i18n-ar="تبرع الآن" data-i18n-en="Donate">Donate</a>
+    </div>
+  </div>
+</header>
+
+<section class="about-hero">
+  <div class="wrap">
+    <h1 data-i18n-ar="من نحن" data-i18n-en="About Us">About Us</h1>
+    <p data-i18n-ar="تعرف على المؤسسة الوطنية للكلى، رسالتنا، رؤيتنا، وقيمنا." data-i18n-en="Learn about the National Kidney Foundation, our mission, vision, and values.">Learn about the National Kidney Foundation, our mission, vision, and values.</p>
+  </div>
+</section>
+
+<!-- Who We Are -->
+<section class="about-section">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-content">
+        <span class="kicker" data-i18n-ar="من نحن" data-i18n-en="Who We Are">Who We Are</span>
+        <h2 data-i18n-ar="المؤسسة الوطنية <span class='accent'>للكلى</span>" data-i18n-en="National Kidney <span class='accent'>Foundation</span>">National Kidney <span class="accent">Foundation</span></h2>
+        <p data-i18n-ar="المؤسسة الوطنية للكلى هي منظمة غير ربحية تعمل في اليمن، تهدف إلى تقديم الدعم والرعاية لمرضى الكلى، وتوعية المجتمع بأمراض الكلى وطرق الوقاية منها." data-i18n-en="The National Kidney Foundation is a non-profit organization operating in Yemen, aiming to provide support and care for kidney patients, and to raise community awareness about kidney diseases and prevention methods.">The National Kidney Foundation is a non-profit organization operating in Yemen, aiming to provide support and care for kidney patients, and to raise community awareness about kidney diseases and prevention methods.</p>
+        <p data-i18n-ar="نعمل من خلال فريق من المتطوعين والمتخصصين في المجال الصحي، ونسعى إلى توسيع نطاق خدماتنا لتشمل أكبر عدد ممكن من المرضى في مختلف محافظات اليمن." data-i18n-en="We work through a team of volunteers and health specialists, and we strive to expand our services to reach as many patients as possible across various governorates of Yemen.">We work through a team of volunteers and health specialists, and we strive to expand our services to reach as many patients as possible across various governorates of Yemen.</p>
+      </div>
+      <div class="about-visual">
+        <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="300" rx="24" fill="#EBF2EE"/>
+          <circle cx="200" cy="120" r="60" fill="#3C6E58" opacity="0.15"/>
+          <circle cx="200" cy="120" r="40" fill="#3C6E58" opacity="0.25"/>
+          <circle cx="200" cy="120" r="20" fill="#3C6E58"/>
+          <path d="M140,200 Q200,150 260,200" fill="none" stroke="#2C5344" stroke-width="8" stroke-linecap="round"/>
+          <path d="M160,220 Q200,175 240,220" fill="none" stroke="#3C6E58" stroke-width="6" stroke-linecap="round" opacity="0.6"/>
+          <circle cx="120" cy="180" r="12" fill="#D8402F" opacity="0.8"/>
+          <circle cx="280" cy="180" r="12" fill="#D8402F" opacity="0.8"/>
+          <text x="200" y="270" font-size="16" font-family="Fraunces,serif" font-weight="600" text-anchor="middle" fill="#2C5344">Hope &amp; Care</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Mission, Vision, Values -->
+<section class="about-section" style="background:var(--paper);">
+  <div class="wrap">
+    <div class="section-head" style="margin:0 auto 16px;text-align:center;max-width:700px;">
+      <span class="kicker" data-i18n-ar="ما نؤمن به" data-i18n-en="What We Believe">What We Believe</span>
+      <h2 data-i18n-ar="الرسالة والرؤية والقيم" data-i18n-en="Mission, Vision &amp; Values">Mission, Vision &amp; Values</h2>
+    </div>
+    <div class="mvv-grid">
+      <div class="mvv-card">
+        <div class="icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+        </div>
+        <h3 data-i18n-ar="الرسالة" data-i18n-en="Mission">Mission</h3>
+        <p data-i18n-ar="تقديم الدعم والرعاية لمرضى الكلى في اليمن، وتعزيز الوعي الصحي، ودعم الأسر المتضررة." data-i18n-en="To provide support and care for kidney patients in Yemen, promote health awareness, and support affected families.">To provide support and care for kidney patients in Yemen, promote health awareness, and support affected families.</p>
+      </div>
+      <div class="mvv-card">
+        <div class="icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+        </div>
+        <h3 data-i18n-ar="الرؤية" data-i18n-en="Vision">Vision</h3>
+        <p data-i18n-ar="مجتمع يمني واعٍ بصحة الكلى، يحصل فيه كل مريض على الرعاية والدعم الذي يستحقه." data-i18n-en="A Yemeni community aware of kidney health, where every patient receives the care and support they deserve.">A Yemeni community aware of kidney health, where every patient receives the care and support they deserve.</p>
+      </div>
+      <div class="mvv-card">
+        <div class="icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+        </div>
+        <h3 data-i18n-ar="القيم" data-i18n-en="Values">Values</h3>
+        <p data-i18n-ar="الإنسانية، الشفافية، التضامن، والالتزام. هذه المبادئ توجه كل عمل نقوم به." data-i18n-en="Humanity, transparency, solidarity, and commitment. These principles guide every action we take.">Humanity, transparency, solidarity, and commitment. These principles guide every action we take.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- What We Do -->
+<section class="about-section">
+  <div class="wrap">
+    <div class="about-grid reverse">
+      <div class="about-visual">
+        <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="300" rx="24" fill="#EBF2EE"/>
+          <rect x="80" y="80" width="240" height="40" rx="8" fill="#3C6E58"/>
+          <rect x="80" y="135" width="180" height="40" rx="8" fill="#2C5344"/>
+          <rect x="80" y="190" width="200" height="40" rx="8" fill="#D8402F" opacity="0.7"/>
+          <circle cx="60" cy="100" r="20" fill="#D8402F" opacity="0.2"/>
+          <circle cx="60" cy="100" r="10" fill="#D8402F" opacity="0.5"/>
+          <text x="200" y="105" font-size="14" font-family="Inter,sans-serif" font-weight="600" fill="white" text-anchor="middle">Dialysis Support</text>
+          <text x="200" y="160" font-size="14" font-family="Inter,sans-serif" font-weight="600" fill="white" text-anchor="middle">Health Awareness</text>
+          <text x="200" y="215" font-size="14" font-family="Inter,sans-serif" font-weight="600" fill="white" text-anchor="middle">Family Assistance</text>
+        </svg>
+      </div>
+      <div class="about-content">
+        <span class="kicker" data-i18n-ar="ماذا نفعل" data-i18n-en="What We Do">What We Do</span>
+        <h2 data-i18n-ar="خدماتنا <span class='accent'>الرئيسية</span>" data-i18n-en="Our <span class='accent'>Core</span> Services">Our <span class="accent">Core</span> Services</h2>
+        <p data-i18n-ar="نركز على ثلاثة مجالات رئيسية لتحقيق أثر ملموس في حياة المرضى:" data-i18n-en="We focus on three key areas to make a tangible impact in patients' lives:">We focus on three key areas to make a tangible impact in patients' lives:</p>
+        <ul class="services-list">
+          <li>
+            <span class="num">1</span>
+            <div>
+              <strong data-i18n-ar="دعم غسيل الكلى" data-i18n-en="Dialysis Support">Dialysis Support</strong>
+              <p data-i18n-ar="توفير الدعم اللازم لتشغيل مراكز غسيل الكلى وتأمين المستلزمات." data-i18n-en="Providing necessary support for operating dialysis centers and securing supplies.">Providing necessary support for operating dialysis centers and securing supplies.</p>
+            </div>
+          </li>
+          <li>
+            <span class="num">2</span>
+            <div>
+              <strong data-i18n-ar="التوعية والكشف المبكر" data-i18n-en="Awareness &amp; Early Detection">Awareness &amp; Early Detection</strong>
+              <p data-i18n-ar="برامج تثقيفية وفحوصات دورية للكشف المبكر عن أمراض الكلى." data-i18n-en="Educational programs and regular checkups for early detection of kidney diseases.">Educational programs and regular checkups for early detection of kidney diseases.</p>
+            </div>
+          </li>
+          <li>
+            <span class="num">3</span>
+            <div>
+              <strong data-i18n-ar="دعم الأسر" data-i18n-en="Family Support">Family Support</strong>
+              <p data-i18n-ar="تقديم مساعدات مادية ومعنوية لأسر المرضى لتخفيف الأعباء." data-i18n-en="Providing material and moral support to patients' families to alleviate burdens.">Providing material and moral support to patients' families to alleviate burdens.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Call to Action -->
+<section class="about-section" style="background:var(--green-tint);">
+  <div class="wrap" style="text-align:center;max-width:720px;margin:0 auto;">
+    <h2 data-i18n-ar="كن جزءاً من <span class='accent'>رسالتنا</span>" data-i18n-en="Be Part of <span class='accent'>Our Mission</span>">Be Part of <span class="accent">Our Mission</span></h2>
+    <p style="font-size:16px;color:var(--stone);line-height:1.7;margin:0 0 28px;" data-i18n-ar="سواء من خلال التبرع أو التطوع أو نشر الوعي، يمكنك أن تحدث فرقاً في حياة مرضى الكلى وعائلاتهم." data-i18n-en="Whether through donating, volunteering, or spreading awareness, you can make a difference in the lives of kidney patients and their families.">Whether through donating, volunteering, or spreading awareness, you can make a difference in the lives of kidney patients and their families.</p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+      <a href="donate.html" class="btn-donate" style="padding:14px 32px;font-size:16px;" data-i18n-ar="تبرع الآن" data-i18n-en="Donate Now">Donate Now</a>
+      <a href="index.html#contact" style="border:1.5px solid var(--green);color:var(--green);padding:13px 31px;border-radius:999px;font-weight:600;font-size:15px;text-decoration:none;display:inline-block;" data-i18n-ar="تواصل معنا" data-i18n-en="Contact Us">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-bottom">
+      <span data-i18n-ar="© 2026 المؤسسة الوطنية للكلى. جميع الحقوق محفوظة." data-i18n-en="&copy; 2026 National Kidney Foundation - Yemen. All rights reserved.">&copy; 2026 National Kidney Foundation - Yemen. All rights reserved.</span>
+      <div class="footer-links">
+        <a href="privacy-policy.html" data-i18n-ar="سياسة الخصوصية" data-i18n-en="Privacy Policy">Privacy Policy</a>
+        <a href="index.html" data-i18n-ar="الرئيسية" data-i18n-en="Home">Home</a>
+        <a href="donate.html" data-i18n-ar="تبرع" data-i18n-en="Donate">Donate</a>
+        <a href="faq.html" data-i18n-ar="الأسئلة الشائعة" data-i18n-en="FAQ">FAQ</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating WhatsApp Button -->
+<a href="https://wa.me/967772834168" class="floating-wa" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm.029 18.88c-1.161 0-2.305-.292-3.318-.844l-3.677.964.984-3.595c-.607-1.052-.927-2.277-.927-3.541 0-5.132 4.168-9.3 9.3-9.3 5.131 0 9.3 4.168 9.3 9.3 0 5.132-4.169 9.3-9.3 9.3z"/></svg>
+</a>
+
+<script>
+  var currentLang = 'en';
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var savedLang = localStorage.getItem('lang');
+    if (savedLang && savedLang !== 'en') {
+      switchLanguage(savedLang);
+    }
+
+    var elements = document.querySelectorAll('[data-i18n-ar]');
+    for (var i = 0; i < elements.length; i++) {
+      var el = elements[i];
+      if (!el.hasAttribute('data-i18n-en')) {
+        el.setAttribute('data-i18n-en', el.innerHTML);
+      }
+    }
+  });
+
+  function switchLanguage(lang) {
+    if (lang === currentLang) return;
+    currentLang = lang;
+    localStorage.setItem('lang', lang);
+    var isAr = lang === 'ar';
+
+    document.body.classList.toggle('rtl', isAr);
+    document.documentElement.dir = isAr ? 'rtl' : 'ltr';
+    document.documentElement.lang = lang;
+
+    var elements = document.querySelectorAll('[data-i18n-ar]');
+    for (var i = 0; i < elements.length; i++) {
+      var el = elements[i];
+      var text = isAr ? el.getAttribute('data-i18n-ar') : el.getAttribute('data-i18n-en');
+      if (text !== null) {
+        el.innerHTML = text;
+      }
+    }
+
+    var buttons = document.querySelectorAll('.lang-toggle button');
+    for (var j = 0; j < buttons.length; j++) {
+      var btn = buttons[j];
+      btn.classList.toggle('active', btn.textContent.trim().toLowerCase() === lang);
+    }
+  }
+</script>
+
+</body>
+</html>

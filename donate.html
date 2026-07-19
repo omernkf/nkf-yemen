@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donate - National Kidney Foundation - Yemen</title>
+  <meta name="description" content="Support kidney patients in Yemen by donating to the National Kidney Foundation. Your contribution provides life-saving dialysis care and medications.">
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=Markazi+Text:wght@500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --green: #3C6E58;
+      --green-deep: #2C5344;
+      --green-tint: #EBF2EE;
+      --red: #D8402F;
+      --red-deep: #B93325;
+      --cream: #FBF7F1;
+      --paper: #FFFFFF;
+      --ink: #2A2E2C;
+      --stone: #6E756F;
+      --line: #E4DFD5;
+      --radius-cup: 28px 28px 28px 4px;
+    }
+    *{box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{
+      margin:0;
+      background:var(--cream);
+      color:var(--ink);
+      font-family:'Inter',sans-serif;
+      -webkit-font-smoothing:antialiased;
+      transition:background .3s ease;
+    }
+    body.rtl{direction:rtl;}
+    body.rtl, body.rtl *{font-family:'Noto Sans Arabic','Inter',sans-serif;}
+    .display{font-family:'Fraunces',serif; font-optical-sizing:auto;}
+    body.rtl .display{font-family:'Markazi Text','Noto Sans Arabic',serif; font-weight:700;}
+    
+    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+      outline: 3px solid var(--green);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+    
+    a{color:inherit; text-decoration:none;}
+    img{max-width:100%;display:block;}
+    .wrap{max-width:1120px;margin:0 auto;padding:0 28px;}
+
+    header{
+      position:sticky; top:0; z-index:50;
+      background:rgba(251,247,241,.92);
+      backdrop-filter:blur(8px);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 28px; max-width:1120px; margin:0 auto;
+    }
+    .brand{display:flex; align-items:center; gap:12px;}
+    .brand img{height:46px; width:46px; border-radius:50%; object-fit:cover;}
+    .brand-name{font-size:15px; font-weight:600; line-height:1.2; max-width:260px;}
+    nav.links{display:flex; gap:26px; font-size:14.5px; font-weight:500;}
+    nav.links a{text-decoration:none; color:var(--ink); opacity:.8; transition:opacity .2s;}
+    nav.links a:hover{opacity:1;}
+    .nav-right{display:flex; align-items:center; gap:16px;}
+    .lang-toggle{
+      display:flex; border:1px solid var(--green); border-radius:999px; overflow:hidden;
+      font-size:13px; font-weight:600;
+    }
+    .lang-toggle button{
+      border:none; background:transparent; padding:7px 14px; cursor:pointer;
+      color:var(--green); transition:.2s;
+    }
+    .lang-toggle button.active{background:var(--green); color:#fff;}
+    .btn-donate{
+      background:var(--red); color:#fff; padding:9px 20px; border-radius:999px;
+      font-size:14px; font-weight:600; text-decoration:none; white-space:nowrap;
+    }
+    @media (max-width:860px){
+      nav.links{display:none;}
+      .brand-name{display:none;}
+    }
+
+    .donate-page-hero{
+      background:var(--green-deep); 
+      color:#fff; 
+      padding:60px 0 50px;
+      position:relative;
+      overflow:hidden;
+    }
+    .donate-page-hero::after{
+      content:''; 
+      position:absolute; 
+      width:300px; 
+      height:300px; 
+      border-radius:50%; 
+      background:rgba(255,255,255,0.05); 
+      top:-100px; 
+      right:-80px;
+    }
+    body.rtl .donate-page-hero::after{right:auto; left:-80px;}
+    .donate-page-hero .wrap{position:relative; z-index:1;}
+    .donate-page-hero h1{
+      font-size:clamp(32px,4vw,48px); 
+      margin:0 0 12px; 
+      font-weight:600;
+      font-family:'Fraunces',serif;
+    }
+    body.rtl .donate-page-hero h1{font-family:'Markazi Text',serif;}
+    .donate-page-hero p{
+      font-size:17px; 
+      opacity:.85; 
+      max-width:600px; 
+      margin:0;
+    }
+
+    .donate-section{padding:60px 0 80px;}
+    .donate-card{
+      background:var(--paper); 
+      border:1px solid var(--line); 
+      border-radius:32px;
+      padding:48px; 
+      display:grid; 
+      grid-template-columns:1.1fr .9fr; 
+      gap:48px; 
+      align-items:start;
+      position:relative; 
+      overflow:hidden;
+    }
+    @media (max-width:860px){
+      .donate-card{
+        grid-template-columns:1fr; 
+        padding:32px;
+      }
+    }
+    .donate-card::before{
+      content:""; 
+      position:absolute; 
+      width:340px; 
+      height:340px; 
+      border-radius:50%;
+      background:var(--green-tint); 
+      top:-160px; 
+      right:-140px; 
+      z-index:0;
+    }
+    body.rtl .donate-card::before{right:auto; left:-140px;}
+    .donate-card > *{position:relative; z-index:1;}
+    .donate-card h2{
+      margin:0 0 16px; 
+      font-weight:600; 
+      font-size:clamp(24px,2.8vw,32px);
+    }
+    .donate-card p{
+      color:var(--stone); 
+      font-size:15px; 
+      line-height:1.6; 
+      margin:0 0 24px;
+    }
+    .donate-card h3{
+      margin:0 0 10px; 
+      font-weight:600; 
+      font-size:18px;
+    }
+
+    .donate-table{
+      width:100%; 
+      border-collapse:collapse; 
+      margin:20px 0;
+    }
+    .donate-table th,
+    .donate-table td{
+      padding:12px 14px; 
+      border:1px solid var(--line); 
+      text-align:center; 
+      font-size:14px;
+    }
+    .donate-table th{
+      background:var(--green-tint); 
+      font-weight:600;
+    }
+    .donate-table td:first-child{
+      font-weight:600;
+    }
+    .copy-btn{
+      background:var(--green); 
+      color:#fff; 
+      border:none; 
+      padding:6px 16px; 
+      border-radius:6px;
+      cursor:pointer; 
+      font-size:12.5px; 
+      font-weight:600; 
+      transition: all 0.2s ease;
+    }
+    .copy-btn:hover{
+      background:var(--green-deep);
+      transform:scale(1.05);
+    }
+    .copy-btn:active{
+      transform:scale(0.95);
+    }
+
+    .donate-side{
+      background:var(--green-tint); 
+      border-radius:24px; 
+      padding:28px;
+    }
+    .donate-side h4{
+      margin:0 0 12px; 
+      font-size:15px; 
+      font-weight:700;
+    }
+    .donate-side ul{
+      margin:0; 
+      padding:0; 
+      list-style:none; 
+      display:grid; 
+      gap:12px;
+    }
+    .donate-side li{
+      font-size:14px; 
+      color:var(--ink); 
+      display:flex; 
+      gap:10px;
+    }
+    .donate-side li::before{
+      content:"✓"; 
+      color:var(--green-deep); 
+      font-weight:700;
+    }
+
+    .whatsapp-note{
+      background:#E8F5E9; 
+      border-radius:16px; 
+      padding:18px 22px; 
+      margin-top:24px; 
+      display:flex; 
+      align-items:center; 
+      gap:12px;
+    }
+    .whatsapp-note svg{
+      width:28px; 
+      height:28px; 
+      flex-shrink:0; 
+      fill:#25D366;
+    }
+    .whatsapp-note p{
+      margin:0; 
+      font-size:14px; 
+      color:var(--ink);
+    }
+    .whatsapp-note a{
+      color:var(--green-deep); 
+      font-weight:600; 
+      text-decoration:underline;
+    }
+    .whatsapp-note a:hover{
+      color:var(--red);
+    }
+
+    .floating-wa {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: #25D366;
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      z-index: 1000;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    body.rtl .floating-wa {
+      right: auto;
+      left: 30px;
+    }
+    .floating-wa:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+    }
+    .floating-wa svg {
+      width: 35px;
+      height: 35px;
+      fill: white;
+    }
+
+    footer{
+      background:var(--green-deep); 
+      color:rgba(255,255,255,.8); 
+      padding:40px 0 28px; 
+      margin-top:20px;
+    }
+    .footer-bottom{
+      border-top:1px solid rgba(255,255,255,.15); 
+      padding-top:20px; 
+      font-size:12.5px; 
+      color:rgba(255,255,255,.5); 
+      display:flex; 
+      justify-content:space-between; 
+      flex-wrap:wrap; 
+      gap:10px;
+    }
+    .footer-links{
+      display:flex; 
+      gap:20px; 
+      flex-wrap:wrap;
+    }
+    .footer-links a{
+      color:rgba(255,255,255,.7); 
+      text-decoration:none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover{
+      color:#fff;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="brand">
+      <img src="images/logo.png" alt="NKF Yemen Logo">
+      <div class="brand-name" data-i18n-ar="المؤسسة الوطنية للكلى" data-i18n-en="National Kidney Foundation - Yemen">
+        National Kidney Foundation - Yemen
+      </div>
+    </div>
+    <nav class="links" aria-label="Main Navigation">
+      <a href="index.html#about" data-i18n-ar="من نحن" data-i18n-en="About">About</a>
+      <a href="index.html#programs" data-i18n-ar="برامجنا" data-i18n-en="Programs">Programs</a>
+      <a href="index.html#contact" data-i18n-ar="اتصل بنا" data-i18n-en="Contact">Contact</a>
+    </nav>
+    <div class="nav-right">
+      <div class="lang-toggle" aria-label="Language Toggle">
+        <button class="active" onclick="switchLanguage('en')" aria-label="Switch to English">EN</button>
+        <button onclick="switchLanguage('ar')" aria-label="Switch to Arabic">AR</button>
+      </div>
+      <a href="donate.html" class="btn-donate" data-i18n-ar="تبرع الآن" data-i18n-en="Donate">Donate</a>
+    </div>
+  </div>
+</header>
+
+<section class="donate-page-hero">
+  <div class="wrap">
+    <h1 data-i18n-ar="تبرع لدعم مرضى الكلى" data-i18n-en="Donate to Support Kidney Patients">Donate to Support Kidney Patients</h1>
+    <p data-i18n-ar="كل مساهمة تحدث فرقاً في حياة المرضى وعائلاتهم في اليمن." data-i18n-en="Every contribution makes a difference in the lives of patients and their families across Yemen.">Every contribution makes a difference in the lives of patients and their families across Yemen.</p>
+  </div>
+</section>
+
+<section class="donate-section">
+  <div class="wrap">
+    <div class="donate-card">
+      <div>
+        <!-- ================= صورة التبرع موجودة هنا ================= -->
+        <img src="images/donate.png" alt="Support Kidney Patients" style="width: 100%; max-width: 500px; margin: 0 auto 20px; border-radius: 16px; display: block;">
+
+        <h2 data-i18n-ar="قم بتحويل تبرعك عبر بنك الكريمي" data-i18n-en="Transfer your donation via Al-Kuraimi Bank">Transfer your donation via Al-Kuraimi Bank</h2>
+        <p data-i18n-ar="نرجو إرسال إيصال التحويل عبر واتساب بعد إتمام العملية للمتابعة والتأكيد." data-i18n-en="Please send the transfer receipt via WhatsApp after completing the transaction for follow-up and confirmation.">Please send the transfer receipt via WhatsApp after completing the transaction for follow-up and confirmation.</p>
+
+        <!-- ================= هذا هو الجدول الصحيح ================= -->
+        <table class="donate-table">
+          <thead>
+            <tr>
+              <th data-i18n-ar="العملة" data-i18n-en="Currency">Currency</th>
+              <th data-i18n-ar="رقم الحساب" data-i18n-en="Account Number">Account Number</th>
+              <th data-i18n-ar="الإجراء" data-i18n-en="Action">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>YER</td>
+              <td id="acc1">3015383789</td>
+              <td><button class="copy-btn" onclick="copyAcc('acc1')" data-i18n-ar="نسخ" data-i18n-en="Copy">Copy</button></td>
+            </tr>
+            <tr>
+              <td>USD</td>
+              <td id="acc2">3096205596</td>
+              <td><button class="copy-btn" onclick="copyAcc('acc2')" data-i18n-ar="نسخ" data-i18n-en="Copy">Copy</button></td>
+            </tr>
+            <tr>
+              <td>SAR</td>
+              <td id="acc3">3123405241</td>
+              <td><button class="copy-btn" onclick="copyAcc('acc3')" data-i18n-ar="نسخ" data-i18n-en="Copy">Copy</button></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="whatsapp-note">
+          <svg viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm.029 18.88c-1.161 0-2.305-.292-3.318-.844l-3.677.964.984-3.595c-.607-1.052-.927-2.277-.927-3.541 0-5.132 4.168-9.3 9.3-9.3 5.131 0 9.3 4.168 9.3 9.3 0 5.132-4.169 9.3-9.3 9.3z"/></svg>
+          <p data-i18n-ar="أرسل إيصال التحويل عبر <a href='https://wa.me/967772834168' target='_blank' rel='noopener'>واتساب +967 772 834 168</a> للمتابعة." data-i18n-en="Send the transfer receipt via <a href='https://wa.me/967772834168' target='_blank' rel='noopener'>WhatsApp +967 772 834 168</a> for follow-up.">Send the transfer receipt via <a href="https://wa.me/967772834168" target="_blank" rel="noopener">WhatsApp +967 772 834 168</a> for follow-up.</p>
+        </div>
+      </div>
+      <div class="donate-side">
+        <h4 data-i18n-ar="تأثير تبرعك" data-i18n-en="Your Impact">Your Impact</h4>
+        <ul>
+          <li data-i18n-ar="$50 توفر الأدوية الأساسية لشهر" data-i18n-en="$50 provides essential medications for a month">$50 provides essential medications for a month</li>
+          <li data-i18n-ar="$100 تغطي مستلزمات جلسات الغسيل" data-i18n-en="$100 covers session supplies">$100 covers session supplies</li>
+          <li data-i18n-ar="$250 تدعم عائلة مريض بالكامل" data-i18n-en="$250 supports a patient's entire family">$250 supports a patient's entire family</li>
+        </ul>
+        <div style="margin-top:20px;padding-top:20px;border-top:1px solid rgba(44,83,68,.15);">
+          <p style="font-size:13px;color:var(--stone);margin:0;" data-i18n-ar="جميع التبرعات تستخدم مباشرة لرعاية المرضى." data-i18n-en="All donations go directly to patient care.">All donations go directly to patient care.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-bottom">
+      <span data-i18n-ar="© ٢٠٢٦ المؤسسة الوطنية للكلى. جميع الحقوق محفوظة." data-i18n-en="&copy; 2026 National Kidney Foundation - Yemen. All rights reserved.">&copy; 2026 National Kidney Foundation - Yemen. All rights reserved.</span>
+      <div class="footer-links">
+        <a href="privacy-policy.html" data-i18n-ar="سياسة الخصوصية" data-i18n-en="Privacy Policy">Privacy Policy</a>
+        <a href="index.html" data-i18n-ar="الرئيسية" data-i18n-en="Home">Home</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/967772834168" class="floating-wa" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm.029 18.88c-1.161 0-2.305-.292-3.318-.844l-3.677.964.984-3.595c-.607-1.052-.927-2.277-.927-3.541 0-5.132 4.168-9.3 9.3-9.3 5.131 0 9.3 4.168 9.3 9.3 0 5.132-4.169 9.3-9.3 9.3z"/></svg>
+</a>
+
+<script>
+  let currentLang = 'en';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const savedLang = localStorage.getItem('lang');
+    if (savedLang && savedLang !== 'en') {
+      switchLanguage(savedLang);
+    }
+
+    document.querySelectorAll('[data-i18n-ar]').forEach(el => {
+      if (!el.hasAttribute('data-i18n-en')) {
+        el.setAttribute('data-i18n-en', el.innerHTML);
+      }
+    });
+  });
+
+  function switchLanguage(lang) {
+    if(lang === currentLang) return;
+    currentLang = lang;
+    localStorage.setItem('lang', lang);
+    const isAr = lang === 'ar';
+
+    document.body.classList.toggle('rtl', isAr);
+    document.documentElement.dir = isAr ? 'rtl' : 'ltr';
+    document.documentElement.lang = lang;
+
+    document.querySelectorAll('[data-i18n-ar]').forEach(el => {
+      const text = isAr ? el.getAttribute('data-i18n-ar') : el.getAttribute('data-i18n-en');
+      if (text !== null) {
+        el.innerHTML = text;
+      }
+    });
+
+    document.querySelectorAll('.lang-toggle button').forEach(btn => {
+      btn.classList.toggle('active', btn.textContent.trim().toLowerCase() === lang);
+    });
+  }
+
+  function copyAcc(id) {
+    const textElement = document.getElementById(id);
+    const text = textElement.innerText.trim();
+    const btn = document.querySelector(`button[onclick="copyAcc('${id}')"]`);
+    const originalText = btn.textContent;
+    
+    navigator.clipboard.writeText(text).then(() => {
+      btn.textContent = '✓ ' + (currentLang === 'ar' ? 'تم النسخ' : 'Copied');
+      btn.style.background = '#2C5344';
+      setTimeout(() => {
+        btn.textContent = originalText;
+        btn.style.background = '';
+      }, 2000);
+    }).catch(() => {
+      const textArea = document.createElement('textarea');
+      textArea.value = text;
+      document.body.appendChild(textArea);
+      textArea.select();
+      try {
+        document.execCommand('copy');
+        btn.textContent = '✓ ' + (currentLang === 'ar' ? 'تم النسخ' : 'Copied');
+        btn.style.background = '#2C5344';
+        setTimeout(() => {
+          btn.textContent = originalText;
+          btn.style.background = '';
+        }, 2000);
+      } catch (err) {
+        alert(currentLang === 'ar' ? 'تم النسخ: ' + text : 'Copied: ' + text);
+      }
+      document.body.removeChild(textArea);
+    });
+  }
+</script>
+
+</body>
+</html>

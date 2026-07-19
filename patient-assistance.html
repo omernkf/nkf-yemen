@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patient Assistance - NKF Yemen</title>
+  <meta name="description" content="Providing logistical, medical, and psychological assistance to kidney patients in Yemen. Transportation, medications, and compassionate care.">
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=Markazi+Text:wght@500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --green: #3C6E58; --green-deep: #2C5344; --green-tint: #EBF2EE; --red: #D8402F; --cream: #FBF7F1; --paper: #FFFFFF; --ink: #2A2E2C; --stone: #6E756F; --line: #E4DFD5; --radius-cup: 28px 28px 28px 4px;
+    }
+    *{box-sizing:border-box;}
+    body{margin:0; background:var(--cream); color:var(--ink); font-family:'Inter',sans-serif;}
+    body.rtl{direction:rtl; font-family:'Noto Sans Arabic','Inter',sans-serif;}
+    .wrap{max-width:1120px;margin:0 auto;padding:0 28px 40px;}
+    img{max-width:100%;display:block;}
+    
+    header{background:var(--cream); border-bottom:1px solid var(--line); padding:20px 0;}
+    .back-link{display:inline-block; margin-bottom:20px; text-decoration:none; font-weight:600; color:var(--green); font-size:15px;}
+    .back-link:hover{text-decoration:underline;}
+    
+    .hero-article{position:relative; margin-bottom:40px;}
+    .hero-article h1{font-size:clamp(28px,3.6vw,42px); font-weight:600; margin:0 0 10px; font-family:'Fraunces',serif;}
+    body.rtl .hero-article h1{font-family:'Markazi Text',serif;}
+    .hero-article .meta{color:var(--stone); font-size:14px; margin-bottom:20px; display:block;}
+    
+    .article-content p{font-size:16.5px; line-height:1.8; color:var(--stone); margin-bottom:20px;}
+    .article-content h2{font-size:22px; font-weight:600; margin:30px 0 15px;}
+    .article-content blockquote{margin:20px 0; padding:16px 20px; border-left:4px solid var(--green); background:var(--green-tint); border-radius:8px; font-style:italic; font-size:15px; color:var(--ink);}
+    body.rtl .article-content blockquote{border-left:none; border-right:4px solid var(--green);}
+    .article-content ul{margin-bottom:20px; line-height:1.8; color:var(--stone);}
+    .article-content .reference{margin-top:30px; padding-top:20px; border-top:1px solid var(--line); font-size:13px; color:var(--stone);}
+    
+    .floating-wa{position:fixed; bottom:30px; right:30px; background-color:#25D366; color:white; width:60px; height:60px; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(0,0,0,0.15); z-index:1000; transition:transform .3s ease,box-shadow .3s ease;}
+    body.rtl .floating-wa{right:auto; left:30px;}
+    .floating-wa:hover{transform:translateY(-5px) scale(1.05); box-shadow:0 6px 16px rgba(0,0,0,0.2);}
+    .floating-wa svg{width:35px; height:35px; fill:white;}
+    
+    footer{background:var(--green-deep); color:rgba(255,255,255,.8); padding:30px 0 20px; margin-top:30px;}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.15); padding-top:16px; font-size:12.5px; color:rgba(255,255,255,.5); text-align:center;}
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a href="index.html" class="back-link">← Back to Programs</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="hero-article">
+    <h1 data-i18n-ar="مساعدة المرضى: العون على طريق الشفاء" data-i18n-en="Patient Assistance: Support on the Road to Recovery">Patient Assistance: Support on the Road to Recovery</h1>
+    <span class="meta" data-i18n-ar="نشر بتاريخ ١٩ يوليو ٢٠٢٦ | برنامج المساعدة المباشرة" data-i18n-en="Published July 19, 2026 | Direct Assistance Program">Published July 19, 2026 | Direct Assistance Program</span>
+  </article>
+
+  <div class="article-content">
+    <p data-i18n-ar="يعتبر الوصول إلى مراكز غسيل الكلى في اليمن أحد أكبر التحديات التي يواجهها المرضى، خاصة في المناطق النائية. بالإضافة إلى ذلك، فإن تكلفة الأدوية المرافقة للجلسات غالباً ما تكون عبئاً لا يمكن للمريض وعائلته تحمله." data-i18n-en="Accessing dialysis centers in Yemen is one of the biggest challenges patients face, especially in remote areas. Additionally, the cost of medications accompanying the sessions is often a burden that the patient and their family cannot bear.">Accessing dialysis centers in Yemen is one of the biggest challenges patients face, especially in remote areas. Additionally, the cost of medications accompanying the sessions is often a burden that the patient and their family cannot bear.</p>
+
+    <p data-i18n-ar="من خلال برنامج مساعدة المرضى، توفر المؤسسة الوطنية للكلى وسائل نقل مجانية أو مدعومة للمرضى الذين يعيشون بعيداً عن المراكز، بالإضافة إلى توفير حزم الأدوية الأساسية اللازمة قبل وأثناء وبعد جلسات الغسيل." data-i18n-en="Through the Patient Assistance program, the National Kidney Foundation provides free or subsidized transportation for patients living far from centers, in addition to providing essential medication packages needed before, during, and after dialysis sessions.">Through the Patient Assistance program, the National Kidney Foundation provides free or subsidized transportation for patients living far from centers, in addition to providing essential medication packages needed before, during, and after dialysis sessions.</p>
+
+    <h2 data-i18n-ar="ليس فقط دواءً ونقلاً، بل رعاية إنسانية" data-i18n-en="Not just medicine and transport, but compassionate care">Not just medicine and transport, but compassionate care</h2>
+    <p data-i18n-ar="نؤمن بأن العلاج لا يقتصر على الأدوية. لذلك، يضم برنامجنا أيضاً مبادرات للدعم النفسي، حيث نعمل على توفير جلسات استماع وتوجيه للمرضى الذين يعانون من الاكتئاب أو القلق الناتج عن المرض المزمن." data-i18n-en="We believe that treatment is not just about medications. Therefore, our program also includes psychosocial support initiatives, where we provide listening and guidance sessions for patients suffering from depression or anxiety caused by chronic illness.">We believe that treatment is not just about medications. Therefore, our program also includes psychosocial support initiatives, where we provide listening and guidance sessions for patients suffering from depression or anxiety caused by chronic illness.</p>
+
+    <ul>
+      <li data-i18n-ar="توفير سيارات إسعاف وخدمات نقل لنقل المرضى." data-i18n-en="Providing ambulances and transport services for patient transfers.">Providing ambulances and transport services for patient transfers.</li>
+      <li data-i18n-ar="توزيع الأدوية الأساسية (الحديد، الكالسيوم، مضادات الفوسفات)." data-i18n-en="Distributing essential medications (Iron, Calcium, Phosphate binders).">Distributing essential medications (Iron, Calcium, Phosphate binders).</li>
+      <li data-i18n-ar="جلسات دعم نفسي جماعي وفردي للمرضى." data-i18n-en="Group and individual psychological support sessions.">Group and individual psychological support sessions.</li>
+    </ul>
+
+    <blockquote data-i18n-ar=""رعاية المريض لا تنتهي عند باب العيادة. المساعدة الإنسانية هي ما يمنح المريض الأمل والقوة للاستمرار."" data-i18n-en=""Patient care doesn't end at the clinic door. Compassionate assistance is what gives patients hope and strength to continue.".">"Patient care doesn't end at the clinic door. Compassionate assistance is what gives patients hope and strength to continue."</blockquote>
+
+    <div class="reference">
+      <strong data-i18n-ar="المصادر:" data-i18n-en="Sources:">Sources:</strong>
+      <ul>
+        <li>International Society of Nephrology (ISN) - Patient Support Guidelines.</li>
+        <li>Journal of Kidney Diseases & Transplantation, Vol 12, Issue 1.</li>
+        <li>NKF Patient Support & Outreach Program Report, 2025.</li>
+      </ul>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-bottom">
+      <span data-i18n-ar="© ٢٠٢٦ المؤسسة الوطنية للكلى. جميع الحقوق محفوظة." data-i18n-en="&copy; 2026 National Kidney Foundation - Yemen. All rights reserved.">&copy; 2026 National Kidney Foundation - Yemen. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/967772834168" class="floating-wa" target="_blank" rel="noopener" aria-label="Chat">
+  <svg viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm.029 18.88c-1.161 0-2.305-.292-3.318-.844l-3.677.964.984-3.595c-.607-1.052-.927-2.277-.927-3.541 0-5.132 4.168-9.3 9.3-9.3 5.131 0 9.3 4.168 9.3 9.3 0 5.132-4.169 9.3-9.3 9.3z"/></svg>
+</a>
+
+</body>
+</html>
