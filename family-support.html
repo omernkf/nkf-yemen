@@ -20,8 +20,10 @@
     img{max-width:100%;display:block;}
     
     header{background:var(--cream); border-bottom:1px solid var(--line); padding:20px 0;}
-    .back-link{display:inline-block; margin-bottom:20px; text-decoration:none; font-weight:600; color:var(--green); font-size:15px;}
-    .back-link:hover{text-decoration:underline;}
+    .breadcrumb{margin-bottom:20px; font-size:14px; color:var(--stone); display:flex; flex-wrap:wrap; gap:6px;}
+    .breadcrumb a{color:var(--green); text-decoration:none; font-weight:500;}
+    .breadcrumb a:hover{text-decoration:underline;}
+    .breadcrumb .sep{color:var(--line);}
     
     .hero-article{position:relative; margin-bottom:40px;}
     .hero-article h1{font-size:clamp(28px,3.6vw,42px); font-weight:600; margin:0 0 10px; font-family:'Fraunces',serif;}
@@ -48,7 +50,14 @@
 
 <header>
   <div class="wrap">
-    <a href="index.html" class="back-link">← Back to Programs</a>
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+      <a href="index.html" data-i18n-ar="الرئيسية" data-i18n-en="Home">Home</a>
+      <span class="sep">→</span>
+      <a href="index.html#programs" data-i18n-ar="البرامج" data-i18n-en="Programs">Programs</a>
+      <span class="sep">→</span>
+      <span data-i18n-ar="دعم الأسر" data-i18n-en="Family Support">Family Support</span>
+    </div>
   </div>
 </header>
 
@@ -96,6 +105,51 @@
 <a href="https://wa.me/967772834168" class="floating-wa" target="_blank" rel="noopener" aria-label="Chat">
   <svg viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm.029 18.88c-1.161 0-2.305-.292-3.318-.844l-3.677.964.984-3.595c-.607-1.052-.927-2.277-.927-3.541 0-5.132 4.168-9.3 9.3-9.3 5.131 0 9.3 4.168 9.3 9.3 0 5.132-4.169 9.3-9.3 9.3z"/></svg>
 </a>
+
+<script>
+  var currentLang = 'en';
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var savedLang = localStorage.getItem('lang');
+    if (savedLang && savedLang !== 'en') {
+      switchLanguage(savedLang);
+    }
+
+    var elements = document.querySelectorAll('[data-i18n-ar]');
+    for (var i = 0; i < elements.length; i++) {
+      var el = elements[i];
+      if (!el.hasAttribute('data-i18n-en')) {
+        el.setAttribute('data-i18n-en', el.innerHTML);
+      }
+    }
+  });
+
+  function switchLanguage(lang) {
+    if (lang === currentLang) return;
+    currentLang = lang;
+    localStorage.setItem('lang', lang);
+    var isAr = lang === 'ar';
+
+    document.body.classList.toggle('rtl', isAr);
+    document.documentElement.dir = isAr ? 'rtl' : 'ltr';
+    document.documentElement.lang = lang;
+
+    var elements = document.querySelectorAll('[data-i18n-ar]');
+    for (var i = 0; i < elements.length; i++) {
+      var el = elements[i];
+      var text = isAr ? el.getAttribute('data-i18n-ar') : el.getAttribute('data-i18n-en');
+      if (text !== null) {
+        el.innerHTML = text;
+      }
+    }
+
+    var buttons = document.querySelectorAll('.lang-toggle button');
+    for (var j = 0; j < buttons.length; j++) {
+      var btn = buttons[j];
+      btn.classList.toggle('active', btn.textContent.trim().toLowerCase() === lang);
+    }
+  }
+</script>
 
 </body>
 </html>
