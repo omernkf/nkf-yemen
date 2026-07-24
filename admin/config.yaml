@@ -1,0 +1,38 @@
+backend:
+  name: git-gateway
+  branch: main # أو master حسب فرعك في GitHub
+
+media_folder: "images/uploads" # حيث يتم تخزين الصور المرفوعة
+public_folder: "/images/uploads"
+
+collections:
+  - name: "pages" # قسم لإدارة الصفحات الثابتة
+    label: "Pages"
+    files:
+      - file: "index.html"
+        label: "Home Page"
+        name: "home"
+        fields:
+          - { name: hero_title_en, label: "Hero Title (English)", widget: "string" }
+          - { name: hero_title_ar, label: "Hero Title (Arabic)", widget: "string" }
+          - { name: hero_description_en, label: "Hero Description (English)", widget: "text" }
+          - { name: hero_description_ar, label: "Hero Description (Arabic)", widget: "text" }
+          - { name: hero_image, label: "Hero Image", widget: "image" }
+      - file: "about-us.html"
+        label: "About Us Page"
+        name: "about"
+        fields:
+          - { name: page_title_en, label: "Page Title (English)", widget: "string" }
+          - { name: page_title_ar, label: "Page Title (Arabic)", widget: "string" }
+          - { name: content_en, label: "Content (English)", widget: "markdown" }
+          - { name: content_ar, label: "Content (Arabic)", widget: "markdown" }
+  - name: "programs"
+    label: "Programs"
+    folder: "_data/programs" # المجلد الذي سيحفظ فيه ملفات البرامج
+    create: true
+    fields:
+      - { name: title_en, label: "Title (English)", widget: "string" }
+      - { name: title_ar, label: "Title (Arabic)", widget: "string" }
+      - { name: summary_en, label: "Summary (English)", widget: "text" }
+      - { name: summary_ar, label: "Summary (Arabic)", widget: "text" }
+      - { name: image, label: "Image", widget: "image" }
