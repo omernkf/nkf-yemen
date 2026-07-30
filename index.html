@@ -470,7 +470,8 @@
         </ul>
       </div>
       <div>
-        <form name="contact" method="POST" data-netlify="true">
+        <!-- النموذج المعدل الجديد -->
+        <form id="contactForm" action="/api/contact" method="POST">
           <div class="field">
             <label for="name" data-i18n-ar="الاسم الكامل" data-i18n-en="Full Name">Full Name</label>
             <input type="text" id="name" name="name" required aria-required="true">
@@ -483,6 +484,12 @@
             <label for="message" data-i18n-ar="الرسالة" data-i18n-en="Message">Message</label>
             <textarea id="message" name="message" required aria-required="true"></textarea>
           </div>
+
+          <!-- أداة Turnstile -->
+          <div class="cf-turnstile" data-sitekey="YOUR_TURNSTILE_SITE_KEY"></div>
+          <input type="hidden" name="cf-turnstile-response" id="cf-turnstile-response">
+
+          <div id="formStatus" style="margin-top:16px;font-weight:600;"></div>
           <button type="submit" class="submit-btn" data-i18n-ar="إرسال الرسالة" data-i18n-en="Send Message">Send Message</button>
         </form>
       </div>
@@ -530,7 +537,11 @@
   <svg viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm.029 18.88c-1.161 0-2.305-.292-3.318-.844l-3.677.964.984-3.595c-.607-1.052-.927-2.277-.927-3.541 0-5.132 4.168-9.3 9.3-9.3 5.131 0 9.3 4.168 9.3 9.3 0 5.132-4.169 9.3-9.3 9.3z"/></svg>
 </a>
 
+<!-- سكربت Turnstile -->
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
 <script>
+  // --- كود الترجمة الحالي ---
   var currentLang = 'en';
 
   document.addEventListener('DOMContentLoaded', function() {
@@ -573,6 +584,50 @@
       btn.classList.toggle('active', btn.textContent.trim().toLowerCase() === lang);
     }
   }
+
+  // --- كود معالج نموذج الاتصال الجديد ---
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('contactForm');
+    if (!form) return;
+    const statusDiv = document.getElementById('formStatus');
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      statusDiv.textContent = 'جاري الإرسال...';
+      statusDiv.style.color = 'var(--stone)';
+
+      // تجميع البيانات
+      const formData = new FormData(form);
+      // الحصول على رمز Turnstile
+      const turnstileToken = document.getElementById('cf-turnstile-response').value;
+      if (!turnstileToken) {
+        statusDiv.textContent = 'الرجاء إكمال التحقق الأمني.';
+        statusDiv.style.color = 'var(--red)';
+        return;
+      }
+      formData.append('cf-turnstile-response', turnstileToken);
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: formData,
+        });
+        const result = await response.json();
+        if (response.ok && result.success) {
+          statusDiv.textContent = '✅ تم إرسال رسالتك بنجاح. سنتواصل معك قريباً.';
+          statusDiv.style.color = 'var(--green)';
+          form.reset();
+          if (window.turnstile) turnstile.reset(); // إعادة تعيين الأداة
+        } else {
+          statusDiv.textContent = '❌ ' + (result.error || 'حدث خطأ ما. حاول مرة أخرى لاحقاً.');
+          statusDiv.style.color = 'var(--red)';
+        }
+      } catch (err) {
+        statusDiv.textContent = '❌ خطأ في الشبكة. تحقق من اتصالك وحاول مرة أخرى.';
+        statusDiv.style.color = 'var(--red)';
+      }
+    });
+  });
 </script>
 
 </body>
