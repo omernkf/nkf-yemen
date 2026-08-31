@@ -3,30 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>National Kidney Foundation - Yemen</title>
+  <title>National Kidney Foundation - Yemen | المؤسسة الوطنية للكلى</title>
   <meta name="description" content="National Kidney Foundation - Yemen provides critical care, dialysis support, and kidney health awareness across Yemen.">
   <meta name="keywords" content="NKF Yemen, National Kidney Foundation, Yemen, Dialysis, Kidney Disease, Charity, Healthcare Yemen, المؤسسة الوطنية للكلى, اليمن, غسيل الكلى">
   <link rel="canonical" href="https://nkfyemen.org/">
   <meta name="robots" content="index, follow">
-  <meta name="language" content="English">
   <meta property="og:title" content="National Kidney Foundation - Yemen">
   <meta property="og:description" content="Providing critical care, dialysis support, and awareness across Yemen. Hope and Care for Every Patient.">
   <meta property="og:image" content="https://nkfyemen.org/social-preview.jpg">
   <meta property="og:url" content="https://nkfyemen.org/">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="National Kidney Foundation - Yemen">
-  <meta name="twitter:description" content="Providing critical care, dialysis support, and awareness across Yemen. Hope and Care for Every Patient.">
-  <meta name="twitter:image" content="https://nkfyemen.org/social-preview.jpg">
   <link rel="icon" type="image/png" href="logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=Markazi+Text:wght@500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    :root{
+    :root {
       --green: #3C6E58;
       --green-deep: #2C5344;
       --green-tint: #EBF2EE;
+      --green-light: #5A8F74;
       --red: #D8402F;
       --red-deep: #B93325;
       --cream: #FBF7F1;
@@ -35,169 +32,652 @@
       --stone: #6E756F;
       --line: #E4DFD5;
       --radius-cup: 28px 28px 28px 4px;
+      --shadow: 0 20px 40px -24px rgba(42,46,44,.25);
+      --shadow-lg: 0 30px 60px -20px rgba(44,83,68,.35);
     }
-    *{box-sizing:border-box;}
-    html{scroll-behavior:smooth;}
-    body{
-      margin:0;
-      background:var(--cream);
-      color:var(--ink);
-      font-family:'Inter',sans-serif;
-      -webkit-font-smoothing:antialiased;
-      transition:background .3s ease;
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
-    body.rtl{direction:rtl;}
-    body.rtl, body.rtl *{font-family:'Noto Sans Arabic','Inter',sans-serif;}
-    .display{font-family:'Fraunces',serif; font-optical-sizing:auto;}
-    body.rtl .display{font-family:'Markazi Text','Noto Sans Arabic',serif; font-weight:700;}
+    body.rtl { direction: rtl; }
+    body.rtl, body.rtl * { font-family: 'Noto Sans Arabic', 'Inter', sans-serif; }
+    .display { font-family: 'Fraunces', serif; font-optical-sizing: auto; }
+    body.rtl .display { font-family: 'Markazi Text', 'Noto Sans Arabic', serif; font-weight: 700; }
+
+    a { color: inherit; text-decoration: none; }
     a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
       outline: 3px solid var(--green);
       outline-offset: 3px;
       border-radius: 4px;
     }
-    a{color:inherit;}
-    img{max-width:100%;display:block;}
-    .wrap{max-width:1120px;margin:0 auto;padding:0 28px;}
-    header{
-      position:sticky; top:0; z-index:50;
-      background:rgba(251,247,241,.92);
-      backdrop-filter:blur(8px);
-      border-bottom:1px solid var(--line);
+    img { max-width: 100%; display: block; }
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-    .nav{
-      display:flex; align-items:center; justify-content:space-between;
-      padding:14px 28px; max-width:1120px; margin:0 auto;
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
-    .brand{display:flex; align-items:center; gap:12px;}
-    .brand img{height:46px; width:46px; border-radius:50%; object-fit:cover;}
-    .brand-name{font-size:15px; font-weight:600; line-height:1.2; max-width:260px;}
-    nav.links{display:flex; gap:26px; font-size:14.5px; font-weight:500;}
-    nav.links a{text-decoration:none; color:var(--ink); opacity:.8; transition:opacity .2s;}
-    nav.links a:hover{opacity:1;}
-    .nav-right{display:flex; align-items:center; gap:16px;}
-    .lang-toggle{
-      display:flex; border:1px solid var(--green); border-radius:999px; overflow:hidden;
-      font-size:13px; font-weight:600;
+    @keyframes scaleIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
     }
-    .lang-toggle button{
-      border:none; background:transparent; padding:7px 14px; cursor:pointer;
-      color:var(--green); transition:.2s;
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
     }
-    .lang-toggle button.active{background:var(--green); color:#fff;}
-    .btn-donate{
-      background:var(--red); color:#fff; padding:9px 20px; border-radius:999px;
-      font-size:14px; font-weight:600; text-decoration:none; white-space:nowrap;
+    @keyframes pulse-soft {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(60,110,88,0.3); }
+      50% { box-shadow: 0 0 0 16px rgba(60,110,88,0); }
     }
-    @media (max-width:860px){
-      nav.links{display:none;}
-      .brand-name{display:none;}
+    @keyframes gradient-shift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
-    .hero{
-      position:relative; overflow:hidden; padding:88px 0 100px;
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
     }
-    .hero-arc{
-      position:absolute; top:-220px; right:-180px; width:620px; height:620px;
-      border-radius:50%; background:var(--green-tint); z-index:0;
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
-    body.rtl .hero-arc{right:auto; left:-180px;}
-    .hero .wrap{position:relative; z-index:1; display:grid; grid-template-columns:1.15fr .85fr; gap:56px; align-items:center;}
-    @media (max-width:860px){.hero .wrap{grid-template-columns:1fr;}}
-    .eyebrow{
-      display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:600;
-      letter-spacing:.06em; text-transform:uppercase; color:var(--green-deep);
-      background:var(--green-tint); padding:6px 14px; border-radius:999px; margin-bottom:22px;
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(251,247,241,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+      transition: box-shadow 0.3s ease;
     }
-    body.rtl .eyebrow{letter-spacing:0; text-transform:none;}
-    .hero h1{
-      font-size:clamp(34px,4.6vw,54px); line-height:1.08; margin:0 0 22px; font-weight:600;
+    header.scrolled { box-shadow: 0 4px 20px rgba(42,46,44,0.08); }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 28px;
+      max-width: 1120px;
+      margin: 0 auto;
     }
-    .hero h1 .accent{color:var(--red);}
-    .hero p.lede{font-size:18px; line-height:1.6; color:var(--stone); max-width:520px; margin:0 0 32px;}
-    .hero-ctas{display:flex; gap:14px; flex-wrap:wrap;}
-    .btn-primary{
-      background:var(--green); color:#fff; padding:14px 26px; border-radius:var(--radius-cup);
-      text-decoration:none; font-weight:600; font-size:15px; display:inline-block;
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand img {
+      height: 46px; width: 46px; border-radius: 50%; object-fit: cover;
+      transition: transform 0.3s ease;
     }
-    body.rtl .btn-primary{border-radius:28px 28px 4px 28px;}
-    .btn-outline{
-      border:1.5px solid var(--ink); color:var(--ink); padding:13px 26px; border-radius:999px;
-      text-decoration:none; font-weight:600; font-size:15px; display:inline-block;
+    .brand:hover img { transform: scale(1.08) rotate(-3deg); }
+    .brand-name { font-size: 15px; font-weight: 600; line-height: 1.2; max-width: 260px; }
+    nav.links { display: flex; gap: 28px; font-size: 14.5px; font-weight: 500; }
+    nav.links a {
+      position: relative;
+      opacity: 0.8;
+      transition: opacity 0.2s, color 0.2s;
     }
-    .hero-figure{position:relative; display:flex; justify-content:center;}
-    .hero-logo-img { width: 380px; height: 380px; object-fit: contain; border-radius: 50%; box-shadow: 0 30px 60px -20px rgba(44,83,68,.35); background: #fff; padding: 20px; }
-    .stats{
-      background:var(--green-deep); color:#fff; padding:36px 0;
+    nav.links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--green);
+      transition: width 0.3s ease;
+      border-radius: 2px;
     }
-    .stats .wrap{display:grid; grid-template-columns:repeat(4,1fr); gap:24px; text-align:center;}
-    @media (max-width:700px){.stats .wrap{grid-template-columns:repeat(2,1fr);}}
-    .stat b{display:block; font-family:'Fraunces',serif; font-size:32px; font-weight:600;}
-    body.rtl .stat b{font-family:'Markazi Text',serif;}
-    .stat span{font-size:13px; opacity:.85;}
-    section{padding:88px 0;}
-    .section-head{max-width:640px; margin:0 0 48px;}
-    .kicker{
-      font-size:13px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--red);
-      margin-bottom:10px; display:block;
+    body.rtl nav.links a::after { left: auto; right: 0; }
+    nav.links a:hover { opacity: 1; color: var(--green); }
+    nav.links a:hover::after { width: 100%; }
+    .nav-right { display: flex; align-items: center; gap: 16px; }
+    .lang-toggle {
+      display: flex;
+      border: 1.5px solid var(--green);
+      border-radius: 999px;
+      overflow: hidden;
+      font-size: 13px;
+      font-weight: 600;
     }
-    body.rtl .kicker{letter-spacing:0; text-transform:none;}
-    h2{font-size:clamp(26px,3.2vw,36px); margin:0 0 14px; font-weight:600;}
-    .section-head p{color:var(--stone); font-size:16px; line-height:1.65; margin:0;}
-    .programs-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:24px;}
-    @media (max-width:960px){.programs-grid{grid-template-columns:1fr 1fr;}}
-    @media (max-width:600px){.programs-grid{grid-template-columns:1fr;}}
-    .program-card{
-      background:var(--paper); border:1px solid var(--line); border-radius:var(--radius-cup);
-      padding:30px 26px; transition:transform .25s ease, box-shadow .25s ease;
+    .lang-toggle button {
+      border: none;
+      background: transparent;
+      padding: 7px 14px;
+      cursor: pointer;
+      color: var(--green);
+      transition: all 0.25s ease;
     }
-    body.rtl .program-card{border-radius:28px 28px 4px 28px;}
-    .program-card:hover{transform:translateY(-4px); box-shadow:0 20px 40px -24px rgba(42,46,44,.25);}
-    .program-illustration{
-      width:100%; height:120px; object-fit:contain; margin-bottom:24px; border-radius: 16px;
+    .lang-toggle button.active { background: var(--green); color: #fff; }
+    .lang-toggle button:hover:not(.active) { background: var(--green-tint); }
+    .btn-donate {
+      background: var(--red);
+      color: #fff;
+      padding: 10px 22px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 14px rgba(216,64,47,0.3);
     }
-    .program-card h3{margin:0 0 10px; font-size:18px; font-weight:600;}
-    .program-card p{margin:0; font-size:14.5px; color:var(--stone); line-height:1.6;}
-    .program-card .read-more{display:inline-block; margin-top:16px; font-weight:600; color:var(--green); text-decoration:underline; text-underline-offset:3px; font-size:14px;}
-    .involve{background:var(--green-deep); color:#fff;}
-    .involve .kicker{color:#F3C6BE;}
-    .involve .section-head p{color:rgba(255,255,255,.78);}
-    .involve-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
-    @media (max-width:860px){.involve-grid{grid-template-columns:1fr;}}
-    .involve-card{
-      background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.16);
-      border-radius:var(--radius-cup); padding:26px;
+    .btn-donate:hover {
+      background: var(--red-deep);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(216,64,47,0.4);
     }
-    body.rtl .involve-card{border-radius:28px 28px 4px 28px;}
-    .involve-card h3{margin:0 0 8px; font-size:17px; font-weight:600;}
-    .involve-card p{margin:0 0 18px; font-size:14px; color:rgba(255,255,255,.75); line-height:1.6;}
-    .involve-card a{font-size:14px; font-weight:700; color:#fff; text-decoration:underline; text-underline-offset:3px;}
-    .stories-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
-    @media (max-width:860px){.stories-grid{grid-template-columns:1fr;}}
-    .story-card{background:var(--paper); border:1px solid var(--line); border-radius:var(--radius-cup); padding:30px;}
-    body.rtl .story-card{border-radius:28px 28px 4px 28px;}
-    .story-card blockquote{margin:0 0 16px; font-style:italic; font-size:15px; color:var(--ink); line-height:1.6;}
-    .story-card .author{font-size:13.5px; font-weight:600; color:var(--green-deep);}
-    .story-placeholder-note{font-size:12px; color:var(--stone); margin-top:10px; display:block; opacity:0.7;}
-    .contact{background:var(--paper); border-top:1px solid var(--line);}
-    .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:48px;}
-    @media (max-width:860px){.contact-grid{grid-template-columns:1fr;}}
-    .contact-list{list-style:none; margin:0; padding:0; display:grid; gap:24px;}
-    .contact-list li{display:flex; gap:14px; align-items:center; font-size:15px;}
-    .contact-list li svg{width:24px; height:24px; fill:var(--green); flex-shrink:0;}
-    .contact-list b{display:block; font-size:13px; color:var(--stone); font-weight:600; margin-bottom:4px;}
-    .contact-list a{text-decoration:none; color:var(--ink); transition:color 0.2s;}
-    .contact-list a:hover{color:var(--green);}
-    .field{margin-bottom:16px;}
-    .field label{display:block; font-size:13px; font-weight:600; margin-bottom:6px;}
-    .field input, .field textarea{
-      width:100%; border:1.5px solid var(--line); border-radius:12px; padding:12px 14px;
-      font-family:inherit; font-size:14.5px; background:#fdfcfa;
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 8px;
+      background: none;
+      border: none;
     }
-    .field textarea{resize:vertical; min-height:100px;}
-    .submit-btn{
-      background:var(--green); color:#fff; border:none; padding:13px 28px; border-radius:999px;
-      font-weight:600; font-size:15px; cursor:pointer; transition: opacity 0.2s;
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2.5px;
+      background: var(--ink);
+      border-radius: 2px;
+      transition: all 0.3s ease;
     }
-    .submit-btn:hover{opacity:0.9;}
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 74px;
+      left: 0;
+      right: 0;
+      background: var(--cream);
+      border-bottom: 1px solid var(--line);
+      padding: 20px 28px 28px;
+      z-index: 99;
+      animation: fadeIn 0.3s ease;
+    }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a {
+      display: block;
+      padding: 14px 0;
+      font-size: 16px;
+      font-weight: 500;
+      border-bottom: 1px solid var(--line);
+      transition: color 0.2s;
+    }
+    .mobile-menu a:hover { color: var(--green); }
+    .mobile-menu .btn-donate {
+      display: inline-block;
+      margin-top: 16px;
+      text-align: center;
+    }
+
+    @media (max-width: 860px) {
+      nav.links { display: none; }
+      .brand-name { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 100px 0 110px;
+      background: linear-gradient(135deg, var(--cream) 0%, #f5f0e8 50%, var(--green-tint) 100%);
+      background-size: 200% 200%;
+      animation: gradient-shift 12s ease infinite;
+    }
+    .hero-arc {
+      position: absolute;
+      top: -220px;
+      right: -180px;
+      width: 620px;
+      height: 620px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(60,110,88,0.12) 0%, transparent 70%);
+      z-index: 0;
+      animation: float 8s ease-in-out infinite;
+    }
+    body.rtl .hero-arc { right: auto; left: -180px; }
+    .hero-blob {
+      position: absolute;
+      bottom: -80px;
+      left: -100px;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(216,64,47,0.06) 0%, transparent 70%);
+      z-index: 0;
+      animation: float 10s ease-in-out infinite reverse;
+    }
+    body.rtl .hero-blob { left: auto; right: -100px; }
+    .hero .wrap {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 56px;
+      align-items: center;
+    }
+    @media (max-width: 860px) {
+      .hero .wrap { grid-template-columns: 1fr; text-align: center; }
+      .hero-ctas { justify-content: center; }
+      .hero p.lede { margin-left: auto; margin-right: auto; }
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--green-deep);
+      background: var(--green-tint);
+      padding: 8px 16px;
+      border-radius: 999px;
+      margin-bottom: 22px;
+      animation: fadeInUp 0.8s ease both;
+    }
+    body.rtl .eyebrow { letter-spacing: 0; text-transform: none; }
+    .hero h1 {
+      font-size: clamp(34px, 4.8vw, 56px);
+      line-height: 1.08;
+      margin: 0 0 22px;
+      font-weight: 600;
+      animation: fadeInUp 0.8s 0.15s ease both;
+    }
+    .hero h1 .accent { color: var(--red); }
+    .hero p.lede {
+      font-size: 18px;
+      line-height: 1.65;
+      color: var(--stone);
+      max-width: 520px;
+      margin: 0 0 32px;
+      animation: fadeInUp 0.8s 0.3s ease both;
+    }
+    .hero-ctas {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      animation: fadeInUp 0.8s 0.45s ease both;
+    }
+    .btn-primary {
+      background: var(--green);
+      color: #fff;
+      padding: 15px 28px;
+      border-radius: var(--radius-cup);
+      font-weight: 600;
+      font-size: 15px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 20px rgba(60,110,88,0.3);
+    }
+    body.rtl .btn-primary { border-radius: 28px 28px 4px 28px; }
+    .btn-primary:hover {
+      background: var(--green-deep);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(60,110,88,0.4);
+    }
+    .btn-outline {
+      border: 1.5px solid var(--ink);
+      color: var(--ink);
+      padding: 14px 28px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 15px;
+      display: inline-block;
+      transition: all 0.3s ease;
+    }
+    .btn-outline:hover {
+      background: var(--ink);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+    .hero-figure {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      animation: scaleIn 1s 0.3s ease both;
+    }
+    .hero-logo-img {
+      width: 360px;
+      height: 360px;
+      object-fit: contain;
+      border-radius: 50%;
+      box-shadow: var(--shadow-lg);
+      background: #fff;
+      padding: 24px;
+      animation: float 6s ease-in-out infinite;
+    }
+    @media (max-width: 860px) {
+      .hero-logo-img { width: 260px; height: 260px; }
+    }
+
+    .stats {
+      background: linear-gradient(135deg, var(--green-deep) 0%, #1e3d32 100%);
+      color: #fff;
+      padding: 48px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .stats::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -20%;
+      width: 60%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 60%);
+    }
+    .stats .wrap {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    @media (max-width: 700px) {
+      .stats .wrap { grid-template-columns: repeat(2, 1fr); gap: 32px 16px; }
+    }
+    .stat {
+      padding: 12px;
+      transition: transform 0.3s ease;
+    }
+    .stat:hover { transform: scale(1.05); }
+    .stat b {
+      display: block;
+      font-family: 'Fraunces', serif;
+      font-size: 36px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    body.rtl .stat b { font-family: 'Markazi Text', serif; }
+    .stat span { font-size: 13.5px; opacity: 0.85; }
+
+    section { padding: 96px 0; }
+    .section-head { max-width: 640px; margin: 0 0 52px; }
+    .kicker {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 10px;
+      display: block;
+    }
+    body.rtl .kicker { letter-spacing: 0; text-transform: none; }
+    h2 {
+      font-size: clamp(26px, 3.2vw, 38px);
+      margin: 0 0 14px;
+      font-weight: 600;
+    }
+    .section-head p {
+      color: var(--stone);
+      font-size: 16.5px;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    @media (max-width: 960px) { .programs-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px) { .programs-grid { grid-template-columns: 1fr; } }
+    .program-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-cup);
+      padding: 32px 26px;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      position: relative;
+      overflow: hidden;
+    }
+    body.rtl .program-card { border-radius: 28px 28px 4px 28px; }
+    .program-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--green), var(--green-light));
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
+      transform-origin: left;
+    }
+    body.rtl .program-card::before { transform-origin: right; }
+    .program-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow);
+      border-color: transparent;
+    }
+    .program-card:hover::before { transform: scaleX(1); }
+    .program-illustration {
+      width: 100%;
+      height: 120px;
+      object-fit: contain;
+      margin-bottom: 24px;
+      border-radius: 16px;
+      transition: transform 0.4s ease;
+    }
+    .program-card:hover .program-illustration { transform: scale(1.05); }
+    .program-card h3 { margin: 0 0 10px; font-size: 18px; font-weight: 600; }
+    .program-card p { margin: 0; font-size: 14.5px; color: var(--stone); line-height: 1.65; }
+    .program-card .read-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 18px;
+      font-weight: 600;
+      color: var(--green);
+      font-size: 14px;
+      transition: gap 0.3s ease;
+    }
+    .program-card:hover .read-more { gap: 10px; }
+
+    .stories-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    @media (max-width: 860px) { .stories-grid { grid-template-columns: 1fr; } }
+    .story-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-cup);
+      padding: 32px;
+      transition: all 0.4s ease;
+      position: relative;
+    }
+    body.rtl .story-card { border-radius: 28px 28px 4px 28px; }
+    .story-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow);
+    }
+    .story-card::before {
+      content: '"';
+      position: absolute;
+      top: 16px;
+      left: 24px;
+      font-size: 64px;
+      font-family: Georgia, serif;
+      color: var(--green-tint);
+      line-height: 1;
+      opacity: 0.8;
+    }
+    body.rtl .story-card::before { left: auto; right: 24px; }
+    .story-card blockquote {
+      margin: 16px 0 18px;
+      font-style: italic;
+      font-size: 15.5px;
+      color: var(--ink);
+      line-height: 1.7;
+      position: relative;
+      z-index: 1;
+    }
+    .story-card .author {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--green-deep);
+    }
+    .story-placeholder-note {
+      font-size: 12px;
+      color: var(--stone);
+      margin-top: 10px;
+      display: block;
+      opacity: 0.7;
+    }
+
+    .involve {
+      background: linear-gradient(135deg, var(--green-deep) 0%, #1a3329 100%);
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .involve::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      right: -10%;
+      width: 50%;
+      height: 160%;
+      background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 60%);
+    }
+    .involve .kicker { color: #F3C6BE; }
+    .involve .section-head p { color: rgba(255,255,255,0.78); }
+    .involve-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      position: relative;
+      z-index: 1;
+    }
+    @media (max-width: 860px) { .involve-grid { grid-template-columns: 1fr; } }
+    .involve-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: var(--radius-cup);
+      padding: 30px;
+      transition: all 0.4s ease;
+      backdrop-filter: blur(4px);
+    }
+    body.rtl .involve-card { border-radius: 28px 28px 4px 28px; }
+    .involve-card:hover {
+      background: rgba(255,255,255,0.1);
+      transform: translateY(-6px);
+      border-color: rgba(255,255,255,0.25);
+    }
+    .involve-card h3 { margin: 0 0 10px; font-size: 18px; font-weight: 600; }
+    .involve-card p {
+      margin: 0 0 20px;
+      font-size: 14.5px;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.65;
+    }
+    .involve-card a {
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      transition: opacity 0.2s;
+    }
+    .involve-card a:hover { opacity: 0.8; }
+
+    .contact { background: var(--paper); border-top: 1px solid var(--line); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+    }
+    @media (max-width: 860px) { .contact-grid { grid-template-columns: 1fr; } }
+    .contact-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 24px; }
+    .contact-list li {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      font-size: 15px;
+      transition: transform 0.2s ease;
+    }
+    .contact-list li:hover { transform: translateX(4px); }
+    body.rtl .contact-list li:hover { transform: translateX(-4px); }
+    .contact-list li svg {
+      width: 24px;
+      height: 24px;
+      fill: var(--green);
+      flex-shrink: 0;
+    }
+    .contact-list b {
+      display: block;
+      font-size: 13px;
+      color: var(--stone);
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .contact-list a { transition: color 0.2s; }
+    .contact-list a:hover { color: var(--green); }
+    .field { margin-bottom: 18px; }
+    .field label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 7px;
+    }
+    .field input, .field textarea {
+      width: 100%;
+      border: 1.5px solid var(--line);
+      border-radius: 12px;
+      padding: 13px 16px;
+      font-family: inherit;
+      font-size: 14.5px;
+      background: #fdfcfa;
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+    .field input:focus, .field textarea:focus {
+      border-color: var(--green);
+      box-shadow: 0 0 0 3px rgba(60,110,88,0.12);
+      outline: none;
+    }
+    .field textarea { resize: vertical; min-height: 110px; }
+    .submit-btn {
+      background: var(--green);
+      color: #fff;
+      border: none;
+      padding: 14px 32px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 15px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 14px rgba(60,110,88,0.25);
+    }
+    .submit-btn:hover {
+      background: var(--green-deep);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(60,110,88,0.35);
+    }
+
     .floating-wa {
       position: fixed;
       bottom: 30px;
@@ -210,33 +690,78 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      box-shadow: 0 4px 16px rgba(37,211,102,0.4);
       z-index: 1000;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: all 0.3s ease;
+      animation: pulse-soft 2.5s infinite;
     }
-    body.rtl .floating-wa {
-      right: auto;
-      left: 30px;
-    }
+    body.rtl .floating-wa { right: auto; left: 30px; }
     .floating-wa:hover {
-      transform: translateY(-5px) scale(1.05);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+      transform: translateY(-6px) scale(1.08);
+      box-shadow: 0 8px 24px rgba(37,211,102,0.5);
+      animation: none;
     }
-    .floating-wa svg {
-      width: 35px;
-      height: 35px;
-      fill: white;
+    .floating-wa svg { width: 32px; height: 32px; fill: white; }
+
+    footer {
+      background: var(--green-deep);
+      color: rgba(255,255,255,0.8);
+      padding: 56px 0 32px;
     }
-    footer{background:var(--green-deep); color:rgba(255,255,255,.8); padding:48px 0 28px;}
-    .footer-top{display:flex; justify-content:space-between; gap:32px; flex-wrap:wrap; margin-bottom:32px;}
-    .footer-brand{display:flex; gap:12px; align-items:center; max-width:340px;}
-    .footer-brand img{width:50px; height:50px; border-radius:50%; object-fit:contain; background:#fff; padding:2px;}
-    .footer-cols{display:flex; gap:56px; flex-wrap:wrap;}
-    .footer-col h5{font-size:13px; text-transform:uppercase; letter-spacing:.06em; margin:0 0 14px; color:rgba(255,255,255,.55);}
-    body.rtl .footer-col h5{letter-spacing:0; text-transform:none;}
-    .footer-col a{display:block; font-size:14px; margin-bottom:10px; text-decoration:none; color:rgba(255,255,255,.85); transition: opacity 0.2s;}
-    .footer-col a:hover{opacity:1;}
-    .footer-bottom{border-top:1px solid rgba(255,255,255,.15); padding-top:20px; font-size:12.5px; color:rgba(255,255,255,.5); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    .footer-brand {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      max-width: 340px;
+    }
+    .footer-brand img {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      object-fit: contain;
+      background: #fff;
+      padding: 3px;
+    }
+    .footer-cols { display: flex; gap: 56px; flex-wrap: wrap; }
+    .footer-col h5 {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin: 0 0 16px;
+      color: rgba(255,255,255,0.5);
+    }
+    body.rtl .footer-col h5 { letter-spacing: 0; text-transform: none; }
+    .footer-col a {
+      display: block;
+      font-size: 14.5px;
+      margin-bottom: 12px;
+      color: rgba(255,255,255,0.8);
+      transition: all 0.2s;
+    }
+    .footer-col a:hover {
+      color: #fff;
+      transform: translateX(4px);
+    }
+    body.rtl .footer-col a:hover { transform: translateX(-4px); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.12);
+      padding-top: 24px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    body { animation: fadeIn 0.5s ease; }
   </style>
   <script type="application/ld+json">
   {
@@ -263,14 +788,14 @@
 </head>
 <body>
 
-<header>
+<header id="mainHeader">
   <div class="nav">
-    <div class="brand">
+    <a href="index.html" class="brand">
       <img src="logo.png" alt="NKF Yemen Logo">
       <div class="brand-name" data-i18n-ar="المؤسسة الوطنية للكلى" data-i18n-en="National Kidney Foundation - Yemen">
         National Kidney Foundation - Yemen
       </div>
-    </div>
+    </a>
     <nav class="links" aria-label="Main Navigation">
       <a href="about-us.html" data-i18n-ar="من نحن" data-i18n-en="About">About</a>
       <a href="#programs" data-i18n-ar="برامجنا" data-i18n-en="Programs">Programs</a>
@@ -283,19 +808,30 @@
         <button onclick="switchLanguage('ar')" aria-label="Switch to Arabic">AR</button>
       </div>
       <a href="donate.html" class="btn-donate" data-i18n-ar="تبرع الآن" data-i18n-en="Donate">Donate</a>
+      <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMobileMenu()">
+        <span></span><span></span><span></span>
+      </button>
     </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="about-us.html" data-i18n-ar="من نحن" data-i18n-en="About">About</a>
+    <a href="#programs" onclick="closeMobileMenu()" data-i18n-ar="برامجنا" data-i18n-en="Programs">Programs</a>
+    <a href="faq.html" data-i18n-ar="الأسئلة الشائعة" data-i18n-en="FAQ">FAQ</a>
+    <a href="#contact" onclick="closeMobileMenu()" data-i18n-ar="اتصل بنا" data-i18n-en="Contact">Contact</a>
+    <a href="donate.html" class="btn-donate" data-i18n-ar="تبرع الآن" data-i18n-en="Donate">Donate</a>
   </div>
 </header>
 
 <section class="hero" id="about">
   <div class="hero-arc"></div>
+  <div class="hero-blob"></div>
   <div class="wrap">
     <div>
       <span class="eyebrow" data-i18n-ar="المؤسسة الوطنية للكلى" data-i18n-en="National Kidney Foundation - Yemen">National Kidney Foundation - Yemen</span>
       <h1 class="display" data-i18n-ar="الأمل والرعاية لكل <span class='accent'>مريض</span>" data-i18n-en="Hope and Care for <span class='accent'>Every Patient</span>">Hope and Care for <span class="accent">Every Patient</span></h1>
-      <p class="lede" data-i18n-ar="دعم صحة الكلى والرعاية الحيوية في جميع أنحاء اليمن." data-i18n-en="Providing critical care, dialysis support, and awareness across Yemen.">Providing critical care, dialysis support, and awareness across Yemen.</p>
+      <p class="lede" data-i18n-ar="دعم صحة الكلى والرعاية الحيوية في جميع أنحاء اليمن. نعمل معاً لإنقاذ الأرواح وتخفيف المعاناة." data-i18n-en="Providing critical care, dialysis support, and awareness across Yemen. Together we save lives and ease suffering.">Providing critical care, dialysis support, and awareness across Yemen. Together we save lives and ease suffering.</p>
       <div class="hero-ctas">
-        <a href="donate.html" class="btn-primary" data-i18n-ar="تبرع الآن" data-i18n-en="Donate Now">Donate Now</a>
+        <a href="donate.html" class="btn-primary" data-i18n-ar="تبرع الآن ←" data-i18n-en="Donate Now →">Donate Now →</a>
         <a href="#programs" class="btn-outline" data-i18n-ar="اكتشف برامجنا" data-i18n-en="Our Programs">Our Programs</a>
       </div>
     </div>
@@ -307,60 +843,60 @@
 
 <section class="stats">
   <div class="wrap">
-    <div class="stat">
-      <b data-i18n-ar="١٢,٥٠٠+" data-i18n-en="12,500+">12,500+</b>
+    <div class="stat reveal">
+      <b class="counter" data-target="12500" data-suffix="+">0</b>
       <span data-i18n-ar="جلسة غسيل كلوي" data-i18n-en="Dialysis Sessions">Dialysis Sessions</span>
     </div>
-    <div class="stat">
-      <b data-i18n-ar="٤,٠٠٠" data-i18n-en="4,000">4,000</b>
+    <div class="stat reveal reveal-delay-1">
+      <b class="counter" data-target="4000" data-suffix="">0</b>
       <span data-i18n-ar="مريض تم دعمه" data-i18n-en="Patients Supported">Patients Supported</span>
     </div>
-    <div class="stat">
-      <b data-i18n-ar="١٢" data-i18n-en="12">12</b>
+    <div class="stat reveal reveal-delay-2">
+      <b class="counter" data-target="12" data-suffix="">0</b>
       <span data-i18n-ar="مركز طبي" data-i18n-en="Medical Centers">Medical Centers</span>
     </div>
-    <div class="stat">
-      <b data-i18n-ar="٢٠+" data-i18n-en="20+">20+</b>
-      <span data-i18n-ar="عاما من الخدمة" data-i18n-en="Years of Service">Years of Service</span>
+    <div class="stat reveal reveal-delay-3">
+      <b class="counter" data-target="20" data-suffix="+">0</b>
+      <span data-i18n-ar="عاماً من الخدمة" data-i18n-en="Years of Service">Years of Service</span>
     </div>
   </div>
 </section>
 
 <section id="programs">
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head reveal">
       <span class="kicker" data-i18n-ar="مجالات تركيزنا" data-i18n-en="Our Focus Areas">Our Focus Areas</span>
       <h2 data-i18n-ar="البرامج الأساسية" data-i18n-en="Core Programs">Core Programs</h2>
-      <p data-i18n-ar="نعمل على تخفيف معاناة المرضى عبر برامج تستهدف العلاج والوقاية والدعم." data-i18n-en="We work to alleviate patient suffering through targeted programs for treatment, prevention, and ongoing support.">We work to alleviate patient suffering through targeted programs for treatment, prevention, and ongoing support.</p>
+      <p data-i18n-ar="نعمل على تخفيف معاناة المرضى عبر برامج تستهدف العلاج والوقاية والدعم المستمر." data-i18n-en="We work to alleviate patient suffering through targeted programs for treatment, prevention, and ongoing support.">We work to alleviate patient suffering through targeted programs for treatment, prevention, and ongoing support.</p>
     </div>
     <div class="programs-grid">
-      <div class="program-card">
-        <a href="dialysis-support.html" style="text-decoration: none; color: inherit; display: block;">
-          <img src="dialysis-support.png" alt="دعم غسيل الكلى" class="program-illustration">
+      <div class="program-card reveal">
+        <a href="dialysis-support.html" style="text-decoration:none;color:inherit;display:block;">
+          <img src="dialysis-support.png" alt="Dialysis Support" class="program-illustration">
           <h3 data-i18n-ar="دعم غسيل الكلى" data-i18n-en="Dialysis Support">Dialysis Support</h3>
           <p data-i18n-ar="توفير الأجهزة والمستلزمات الطبية والأدوية للمراكز في اليمن." data-i18n-en="Providing equipment, medical supplies, and medications.">Providing equipment, medical supplies, and medications.</p>
           <span class="read-more" data-i18n-ar="اقرأ المزيد ←" data-i18n-en="Read More →">Read More →</span>
         </a>
       </div>
-      <div class="program-card">
-        <a href="early-screening.html" style="text-decoration: none; color: inherit; display: block;">
-          <img src="early-screening.png" alt="التوعية والكشف المبكر" class="program-illustration">
+      <div class="program-card reveal reveal-delay-1">
+        <a href="early-screening.html" style="text-decoration:none;color:inherit;display:block;">
+          <img src="early-screening.png" alt="Screening & Awareness" class="program-illustration">
           <h3 data-i18n-ar="التوعية والكشف المبكر" data-i18n-en="Screening & Awareness">Screening & Awareness</h3>
-          <p data-i18n-ar="برامج فحص دورية للمجتمعات لاكتشاف مشاكل الكلى." data-i18n-en="Regular community screening to catch kidney issues early.">Regular community screening to catch kidney issues early.</p>
+          <p data-i18n-ar="برامج فحص دورية للمجتمعات لاكتشاف مشاكل الكلى مبكراً." data-i18n-en="Regular community screening to catch kidney issues early.">Regular community screening to catch kidney issues early.</p>
           <span class="read-more" data-i18n-ar="اقرأ المزيد ←" data-i18n-en="Read More →">Read More →</span>
         </a>
       </div>
-      <div class="program-card">
-        <a href="family-support.html" style="text-decoration: none; color: inherit; display: block;">
-          <img src="family-support.png" alt="دعم الأسر" class="program-illustration">
+      <div class="program-card reveal reveal-delay-2">
+        <a href="family-support.html" style="text-decoration:none;color:inherit;display:block;">
+          <img src="family-support.png" alt="Family Support" class="program-illustration">
           <h3 data-i18n-ar="دعم الأسر" data-i18n-en="Family Support">Family Support</h3>
-          <p data-i18n-ar="مساعدة مادية واجتماعية لأسر المرضى." data-i18n-en="Financial and social assistance for families.">Financial and social assistance for families.</p>
+          <p data-i18n-ar="مساعدة مادية واجتماعية لأسر المرضى لتخفيف الأعباء." data-i18n-en="Financial and social assistance for families.">Financial and social assistance for families.</p>
           <span class="read-more" data-i18n-ar="اقرأ المزيد ←" data-i18n-en="Read More →">Read More →</span>
         </a>
       </div>
-      <div class="program-card">
-        <a href="patient-assistance.html" style="text-decoration: none; color: inherit; display: block;">
-          <img src="patients-support.png" alt="مساعدة المرضى" class="program-illustration">
+      <div class="program-card reveal reveal-delay-3">
+        <a href="patient-assistance.html" style="text-decoration:none;color:inherit;display:block;">
+          <img src="patients-support.png" alt="Patient Assistance" class="program-illustration">
           <h3 data-i18n-ar="مساعدة المرضى" data-i18n-en="Patient Assistance">Patient Assistance</h3>
           <p data-i18n-ar="دعم مباشر للمواصلات والأدوية الأساسية." data-i18n-en="Direct logistical support for transport and medications.">Direct logistical support for transport and medications.</p>
           <span class="read-more" data-i18n-ar="اقرأ المزيد ←" data-i18n-en="Read More →">Read More →</span>
@@ -372,263 +908,11 @@
 
 <section id="stories" class="stories">
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head reveal">
       <span class="kicker" data-i18n-ar="قصص الأثر" data-i18n-en="Impact Stories">Impact Stories</span>
       <h2 data-i18n-ar="أصوات من الميدان" data-i18n-en="Voices from the Field">Voices from the Field</h2>
-      <p data-i18n-ar="أمثلة لكيفية إحداث الدعم فرقاً في حياة المرضى. (ملاحظة: هذه أمثلة توضيحية ستستبدل بقصص نجاح حقيقية لاحقاً)." data-i18n-en="Examples of how support makes a difference in patients' lives. (Note: These are placeholder examples that will be replaced with real success stories later).">Examples of how support makes a difference in patients' lives. (Note: These are placeholder examples that will be replaced with real success stories later).</p>
+      <p data-i18n-ar="أمثلة لكيفية إحداث الدعم فرقاً في حياة المرضى. (قصص توضيحية ستُستبدل بقصص حقيقية)." data-i18n-en="Examples of how support makes a difference in patients' lives. (Placeholder examples to be replaced with real stories).">Examples of how support makes a difference in patients' lives. (Placeholder examples to be replaced with real stories).</p>
     </div>
     <div class="stories-grid">
-      <div class="story-card">
-        <blockquote data-i18n-ar="بفضل الدعم المستمر، تمكنت من الاستمرار في جلسات غسيل الكلى دون القلق بشأن تكلفة المواصلات والأدوية." data-i18n-en='"Thanks to the ongoing support, I\'ve been able to continue my dialysis sessions without worrying about the cost of transportation and medications."'>"Thanks to the ongoing support, I've been able to continue my dialysis sessions without worrying about the cost of transportation and medications."</blockquote>
-        <div class="author" data-i18n-ar="- مريض، ٤٥ عاماً" data-i18n-en="- Patient, 45 years old">- Patient, 45 years old</div>
-        <span class="story-placeholder-note" data-i18n-ar="* قصة توضيحية" data-i18n-en="* Placeholder Example">* Placeholder Example</span>
-      </div>
-      <div class="story-card">
-        <blockquote data-i18n-ar="مساعدة الأسرة مكنتنا من توفير الطعام لأطفالي بينما والدهم غير قادر على العمل بسبب مرضه المزمن." data-i18n-en='"The family assistance allowed us to provide food for my children while their father is unable to work due to his chronic illness."'>"The family assistance allowed us to provide food for my children while their father is unable to work due to his chronic illness."</blockquote>
-        <div class="author" data-i18n-ar="- زوجة مريض" data-i18n-en="- Patient's Wife">- Patient's Wife</div>
-        <span class="story-placeholder-note" data-i18n-ar="* قصة توضيحية" data-i18n-en="* Placeholder Example">* Placeholder Example</span>
-      </div>
-      <div class="story-card">
-        <blockquote data-i18n-ar="التطوع هنا فتح عيني على مدى أهمية التثقيف الصحي في مجتمعاتنا الريفية للوقاية من أمراض الكلى." data-i18n-en='"Volunteering here opened my eyes to how crucial health education is in our rural communities to prevent kidney disease."'>"Volunteering here opened my eyes to how crucial health education is in our rural communities to prevent kidney disease."</blockquote>
-        <div class="author" data-i18n-ar="- متطوع في حملات التوعية" data-i18n-en="- Awareness Campaign Volunteer">- Awareness Campaign Volunteer</div>
-        <span class="story-placeholder-note" data-i18n-ar="* قصة توضيحية" data-i18n-en="* Placeholder Example">* Placeholder Example</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="involve">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="kicker" data-i18n-ar="شارك معنا" data-i18n-en="Get Involved">Get Involved</span>
-      <h2 data-i18n-ar="كن جزءاً من الحل" data-i18n-en="Be Part of the Solution">Be Part of the Solution</h2>
-    </div>
-    <div class="involve-grid">
-      <div class="involve-card">
-        <h3 data-i18n-ar="تطوع" data-i18n-en="Volunteer">Volunteer</h3>
-        <p data-i18n-ar="ساهم بوقتك وجهدك في تنظيم الحملات وحملات التوعية." data-i18n-en="Contribute your time and effort in organizing drives and awareness campaigns.">Contribute your time and effort in organizing drives and awareness campaigns.</p>
-        <a href="#contact" data-i18n-ar="انضم الآن" data-i18n-en="Join Now">Join Now</a>
-      </div>
-      <div class="involve-card">
-        <h3 data-i18n-ar="الشراكات" data-i18n-en="Partnerships">Partnerships</h3>
-        <p data-i18n-ar="نعمل مع الشركات والمنظمات لتعظيم تأثيرنا." data-i18n-en="We work with businesses and organizations to maximize our impact.">We work with businesses and organizations to maximize our impact.</p>
-        <a href="#contact" data-i18n-ar="كن شريكاً" data-i18n-en="Partner With Us">Partner With Us</a>
-      </div>
-      <div class="involve-card">
-        <h3 data-i18n-ar="التوعية" data-i18n-en="Spread Awareness">Spread Awareness</h3>
-        <p data-i18n-ar="شارك رسالتنا على منصات التواصل لزيادة الوعي بصحة الكلى." data-i18n-en="Share our message on social platforms to raise awareness on kidney health.">Share our message on social platforms to raise awareness on kidney health.</p>
-        <a href="#contact" data-i18n-ar="معرفة المزيد" data-i18n-en="Learn More">Learn More</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="contact" class="contact">
-  <div class="wrap">
-    <div class="contact-grid">
-      <div>
-        <div class="section-head" style="margin-bottom:32px;">
-          <h2 data-i18n-ar="تواصل معنا" data-i18n-en="Contact Us">Contact Us</h2>
-          <p data-i18n-ar="نحن هنا للإجابة على استفساراتكم ومناقشة سبل التعاون." data-i18n-en="We're here to answer your questions and discuss potential collaborations.">We're here to answer your questions and discuss potential collaborations.</p>
-        </div>
-        <ul class="contact-list">
-          <li>
-            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-            <div>
-              <b data-i18n-ar="العنوان" data-i18n-en="Address">Address</b>
-              <span data-i18n-ar="طريق عدن - تعز، لحج، الجمهورية اليمنية" data-i18n-en="Road Aden – Taiz, Lahj, Republic of Yemen">Road Aden – Taiz, Lahj, Republic of Yemen</span>
-            </div>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-            <div>
-              <b data-i18n-ar="البريد الإلكتروني" data-i18n-en="Email">Email</b>
-              <a href="mailto:nkf-y@protonmail.com">nkf-y@protonmail.com</a>
-            </div>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
-            <div>
-              <b data-i18n-ar="الهاتف / واتساب" data-i18n-en="Phone / WhatsApp">Phone / WhatsApp</b>
-              <a href="https://wa.me/967772834168" target="_blank" rel="noopener noreferrer">+967 772 834 168</a>
-            </div>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
-            <div>
-              <b data-i18n-ar="فيسبوك" data-i18n-en="Facebook">Facebook</b>
-              <a href="https://www.facebook.com/nkf.yemen" target="_blank" rel="noopener noreferrer">facebook.com/nkf.yemen</a>
-            </div>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-            <div>
-              <b data-i18n-ar="لينكد إن" data-i18n-en="LinkedIn">LinkedIn</b>
-              <a href="https://www.linkedin.com/in/nkf-yemen" target="_blank" rel="noopener noreferrer">linkedin.com/in/nkf-yemen</a>
-            </div>
-          </li>
-        </ul>
-      </div>
-      <div>
-        <!-- النموذج المعدل الجديد -->
-        <form id="contactForm" action="/api/contact" method="POST">
-          <div class="field">
-            <label for="name" data-i18n-ar="الاسم الكامل" data-i18n-en="Full Name">Full Name</label>
-            <input type="text" id="name" name="name" required aria-required="true">
-          </div>
-          <div class="field">
-            <label for="email" data-i18n-ar="البريد الإلكتروني" data-i18n-en="Email Address">Email Address</label>
-            <input type="email" id="email" name="email" required aria-required="true">
-          </div>
-          <div class="field">
-            <label for="message" data-i18n-ar="الرسالة" data-i18n-en="Message">Message</label>
-            <textarea id="message" name="message" required aria-required="true"></textarea>
-          </div>
-
-          <!-- أداة Turnstile -->
-          <div class="cf-turnstile" data-sitekey="YOUR_TURNSTILE_SITE_KEY"></div>
-          <input type="hidden" name="cf-turnstile-response" id="cf-turnstile-response">
-
-          <div id="formStatus" style="margin-top:16px;font-weight:600;"></div>
-          <button type="submit" class="submit-btn" data-i18n-ar="إرسال الرسالة" data-i18n-en="Send Message">Send Message</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <img src="logo.png" alt="National Kidney Foundation - Yemen Logo">
-        <div>
-          <b style="display:block;font-size:14.5px;" data-i18n-ar="المؤسسة الوطنية للكلى" data-i18n-en="National Kidney Foundation - Yemen">National Kidney Foundation - Yemen</b>
-          <p data-i18n-ar="نعمل معاً من أجل صحة أفضل في اليمن." data-i18n-en="Working together for better health across Yemen.">Working together for better health across Yemen.</p>
-        </div>
-      </div>
-      <div class="footer-cols">
-        <div class="footer-col">
-          <h5 data-i18n-ar="روابط هامة" data-i18n-en="Quick Links">Quick Links</h5>
-          <a href="about-us.html" data-i18n-ar="من نحن" data-i18n-en="About Us">About Us</a>
-          <a href="#programs" data-i18n-ar="برامجنا" data-i18n-en="Our Programs">Our Programs</a>
-          <a href="faq.html" data-i18n-ar="الأسئلة الشائعة" data-i18n-en="FAQ">FAQ</a>
-          <a href="#contact" data-i18n-ar="اتصل بنا" data-i18n-en="Contact">Contact</a>
-        </div>
-        <div class="footer-col">
-          <h5 data-i18n-ar="المساهمة" data-i18n-en="Get Involved">Get Involved</h5>
-          <a href="donate.html" data-i18n-ar="تبرع" data-i18n-en="Donate">Donate</a>
-          <a href="#contact" data-i18n-ar="التطوع" data-i18n-en="Volunteer">Volunteer</a>
-        </div>
-        <div class="footer-col">
-          <h5 data-i18n-ar="قانوني" data-i18n-en="Legal">Legal</h5>
-          <a href="privacy-policy.html" data-i18n-ar="سياسة الخصوصية" data-i18n-en="Privacy Policy">Privacy Policy</a>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span data-i18n-ar="© ٢٠٢٦ المؤسسة الوطنية للكلى. جميع الحقوق محفوظة." data-i18n-en="&copy; 2026 National Kidney Foundation - Yemen. All rights reserved.">&copy; 2026 National Kidney Foundation - Yemen. All rights reserved.</span>
-      <span data-i18n-ar="مسجلة كمنظمة غير ربحية." data-i18n-en="Registered Non-Profit Organization.">Registered Non-Profit Organization.</span>
-    </div>
-  </div>
-</footer>
-
-<a href="https://wa.me/967772834168" class="floating-wa" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
-  <svg viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm.029 18.88c-1.161 0-2.305-.292-3.318-.844l-3.677.964.984-3.595c-.607-1.052-.927-2.277-.927-3.541 0-5.132 4.168-9.3 9.3-9.3 5.131 0 9.3 4.168 9.3 9.3 0 5.132-4.169 9.3-9.3 9.3z"/></svg>
-</a>
-
-<!-- سكربت Turnstile -->
-<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-
-<script>
-  // --- كود الترجمة الحالي ---
-  var currentLang = 'en';
-
-  document.addEventListener('DOMContentLoaded', function() {
-    var savedLang = localStorage.getItem('lang');
-    if (savedLang && savedLang !== 'en') {
-      switchLanguage(savedLang);
-    }
-
-    var elements = document.querySelectorAll('[data-i18n-ar]');
-    for (var i = 0; i < elements.length; i++) {
-      var el = elements[i];
-      if (!el.hasAttribute('data-i18n-en')) {
-        el.setAttribute('data-i18n-en', el.innerHTML);
-      }
-    }
-  });
-
-  function switchLanguage(lang) {
-    if (lang === currentLang) return;
-    currentLang = lang;
-    localStorage.setItem('lang', lang);
-    var isAr = lang === 'ar';
-
-    document.body.classList.toggle('rtl', isAr);
-    document.documentElement.dir = isAr ? 'rtl' : 'ltr';
-    document.documentElement.lang = lang;
-
-    var elements = document.querySelectorAll('[data-i18n-ar]');
-    for (var i = 0; i < elements.length; i++) {
-      var el = elements[i];
-      var text = isAr ? el.getAttribute('data-i18n-ar') : el.getAttribute('data-i18n-en');
-      if (text !== null) {
-        el.innerHTML = text;
-      }
-    }
-
-    var buttons = document.querySelectorAll('.lang-toggle button');
-    for (var j = 0; j < buttons.length; j++) {
-      var btn = buttons[j];
-      btn.classList.toggle('active', btn.textContent.trim().toLowerCase() === lang);
-    }
-  }
-
-  // --- كود معالج نموذج الاتصال الجديد ---
-  document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('contactForm');
-    if (!form) return;
-    const statusDiv = document.getElementById('formStatus');
-
-    form.addEventListener('submit', async function(e) {
-      e.preventDefault();
-      statusDiv.textContent = 'جاري الإرسال...';
-      statusDiv.style.color = 'var(--stone)';
-
-      // تجميع البيانات
-      const formData = new FormData(form);
-      // الحصول على رمز Turnstile
-      const turnstileToken = document.getElementById('cf-turnstile-response').value;
-      if (!turnstileToken) {
-        statusDiv.textContent = 'الرجاء إكمال التحقق الأمني.';
-        statusDiv.style.color = 'var(--red)';
-        return;
-      }
-      formData.append('cf-turnstile-response', turnstileToken);
-
-      try {
-        const response = await fetch(form.action, {
-          method: 'POST',
-          body: formData,
-        });
-        const result = await response.json();
-        if (response.ok && result.success) {
-          statusDiv.textContent = '✅ تم إرسال رسالتك بنجاح. سنتواصل معك قريباً.';
-          statusDiv.style.color = 'var(--green)';
-          form.reset();
-          if (window.turnstile) turnstile.reset(); // إعادة تعيين الأداة
-        } else {
-          statusDiv.textContent = '❌ ' + (result.error || 'حدث خطأ ما. حاول مرة أخرى لاحقاً.');
-          statusDiv.style.color = 'var(--red)';
-        }
-      } catch (err) {
-        statusDiv.textContent = '❌ خطأ في الشبكة. تحقق من اتصالك وحاول مرة أخرى.';
-        statusDiv.style.color = 'var(--red)';
-      }
-    });
-  });
-</script>
-
-</body>
-</html>
+      <div class="story-card reveal">
+        <blockquote data-i18n-ar="بفضل الدعم المستمر، تمكنت من الاستمرار في جلسات غسيل الكلى دون القلق بشأن تكلفة المواصلات والأدوية." data-i18n-en='"Thanks to the ongoing support, I\'ve been able to continue my dialysis sessions without worrying about the cost of transportation and medications."'>\
