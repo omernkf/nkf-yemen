@@ -1,45 +1,92 @@
 backend:
   name: github
-  repo: omernkf/nkf-yemen  # تأكد أن هذا هو اسم المستودع الخاص بك بالضبط (اسم المستخدم/اسم المستودع)
-  branch: main              # تأكد أن هذا هو اسم الفرع الرئيسي لديك (main أو master)
-  commit_messages:
-    create: "CMS: Create {{slug}}"
-    update: "CMS: Update {{slug}}"
-    delete: "CMS: Delete {{slug}}"
-    uploadMedia: "CMS: Upload {{path}}"
-    deleteMedia: "CMS: Delete {{path}}"
-
-media_folder: "images/uploads"
-public_folder: "/images/uploads"
-
+  repo: omernkf/nkf-yemen
+  branch: main
+locale: ar
+site_url: https://nkf-yemen.netlify.app
+media_folder: uploads
+public_folder: /uploads
+publish: true
+editor:
+  preview: false
 collections:
-  - name: "pages"
-    label: "Pages"
+  - name: settings
+    label: إعدادات الموقع
     files:
-      - file: "index.html"
-        label: "Home Page"
-        name: "home"
+      - name: homepage
+        label: الرئيسية
+        file: content/site.json
+        format: json
         fields:
-          - { name: hero_title_en, label: "Hero Title (English)", widget: "string" }
-          - { name: hero_title_ar, label: "Hero Title (Arabic)", widget: "string" }
-          - { name: hero_description_en, label: "Hero Description (English)", widget: "text" }
-          - { name: hero_description_ar, label: "Hero Description (Arabic)", widget: "text" }
-          - { name: hero_image, label: "Hero Image", widget: "image" }
-      - file: "about-us.html"
-        label: "About Us Page"
-        name: "about"
-        fields:
-          - { name: page_title_en, label: "Page Title (English)", widget: "string" }
-          - { name: page_title_ar, label: "Page Title (Arabic)", widget: "string" }
-          - { name: content_en, label: "Content (English)", widget: "markdown" }
-          - { name: content_ar, label: "Content (Arabic)", widget: "markdown" }
-  - name: "programs"
-    label: "Programs"
-    folder: "_data/programs"
+          - {label: العنوان بالعربية, name: hero_title_ar, widget: string}
+          - {label: English title, name: hero_title_en, widget: string}
+          - {label: الوصف بالعربية, name: hero_description_ar, widget: text}
+          - {label: English description, name: hero_description_en, widget: text}
+          - {label: صورة الرئيسية, name: hero_image, widget: image, required: false}
+          - {label: عرض إحصاءات موثقة, name: impact_enabled, widget: boolean, default: false}
+          - {label: جلسات الغسيل, name: dialysis_sessions, widget: number, value_type: int, min: 0}
+          - {label: المرضى, name: patients_supported, widget: number, value_type: int, min: 0}
+          - {label: المراكز, name: medical_centers, widget: number, value_type: int, min: 0}
+          - {label: سنوات الخدمة, name: years_of_service, widget: number, value_type: int, min: 0}
+  - name: news
+    label: الأخبار
+    folder: content/news
     create: true
+    format: json
+    extension: json
+    identifier_field: slug
+    slug: "{{slug}}"
     fields:
-      - { name: title_en, label: "Title (English)", widget: "string" }
-      - { name: title_ar, label: "Title (Arabic)", widget: "string" }
-      - { name: summary_en, label: "Summary (English)", widget: "text" }
-      - { name: summary_ar, label: "Summary (Arabic)", widget: "text" }
-      - { name: image, label: "Image", widget: "image" }
+      - {label: رابط الخبر بالإنجليزية, name: slug, widget: string, pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', 'حروف إنجليزية صغيرة وشرطة فقط']}
+      - {label: عنوان الخبر, name: title_ar, widget: string}
+      - {label: English title, name: title_en, widget: string, required: false}
+      - {label: التاريخ, name: date, widget: datetime, format: 'YYYY-MM-DDTHH:mm:ssZ'}
+      - {label: الملخص, name: summary_ar, widget: text}
+      - {label: English summary, name: summary_en, widget: text, required: false}
+      - {label: صورة الخبر, name: image, widget: image, required: false}
+      - {label: نص الخبر, name: body_ar, widget: markdown}
+      - {label: English body, name: body_en, widget: markdown, required: false}
+      - {label: رابط فيديو, name: video_url, widget: string, required: false}
+      - {label: رفع فيديو صغير, name: video_file, widget: file, required: false}
+      - {label: منشور, name: published, widget: boolean, default: false}
+  - name: articles
+    label: المقالات
+    folder: content/articles
+    create: true
+    format: json
+    extension: json
+    identifier_field: slug
+    slug: "{{slug}}"
+    fields:
+      - {label: رابط المقال بالإنجليزية, name: slug, widget: string, pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', 'حروف إنجليزية صغيرة وشرطة فقط']}
+      - {label: العنوان, name: title_ar, widget: string}
+      - {label: English title, name: title_en, widget: string, required: false}
+      - {label: التاريخ, name: date, widget: datetime, format: 'YYYY-MM-DDTHH:mm:ssZ'}
+      - {label: الملخص, name: summary_ar, widget: text}
+      - {label: English summary, name: summary_en, widget: text, required: false}
+      - {label: الصورة, name: image, widget: image, required: false}
+      - {label: النص, name: body_ar, widget: markdown}
+      - {label: English body, name: body_en, widget: markdown, required: false}
+      - {label: رابط فيديو, name: video_url, widget: string, required: false}
+      - {label: ملف فيديو, name: video_file, widget: file, required: false}
+      - {label: منشور, name: published, widget: boolean, default: false}
+  - name: gallery
+    label: مكتبة الصور والفيديو
+    folder: content/gallery
+    create: true
+    format: json
+    extension: json
+    identifier_field: slug
+    slug: "{{slug}}"
+    fields:
+      - {label: معرّف بالإنجليزية, name: slug, widget: string, pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', 'حروف إنجليزية صغيرة وشرطة فقط']}
+      - {label: العنوان, name: title_ar, widget: string}
+      - {label: English title, name: title_en, widget: string, required: false}
+      - {label: التاريخ, name: date, widget: datetime, format: 'YYYY-MM-DDTHH:mm:ssZ'}
+      - {label: النوع, name: category, widget: select, options: [image, video]}
+      - {label: صورة, name: image, widget: image, required: false}
+      - {label: فيديو, name: video_file, widget: file, required: false}
+      - {label: رابط YouTube, name: video_url, widget: string, required: false}
+      - {label: الوصف, name: summary_ar, widget: text, required: false}
+      - {label: English description, name: summary_en, widget: text, required: false}
+      - {label: منشور, name: published, widget: boolean, default: false}
