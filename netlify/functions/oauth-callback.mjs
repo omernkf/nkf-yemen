@@ -1,7 +1,7 @@
 import { timingSafeEqual } from 'node:crypto';
 
 const ORIGIN = 'https://nkf-yemen.netlify.app';
-const clearCookie = 'nkf_oauth_state=; Path=/.netlify/functions; HttpOnly; Secure; SameSite=Lax; Max-Age=0';
+const clearCookie = '__Host-nkf_oauth_state=; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=0';
 
 function matches(a, b) {
   if (!a || !b || a.length !== b.length) return false;
@@ -11,8 +11,9 @@ function matches(a, b) {
 export default async function handler(request) {
   const url = new URL(request.url);
   const cookie = request.headers.get('cookie') || '';
-  const stored = cookie.split(';').map(v => v.trim()).find(v => v.startsWith('nkf_oauth_state='))?.split('=')[1];
+  const stored = cookie.split(';').map(v => v.trim()).find(v => v.startsWith('__Host-nkf_oauth_state='))?.split('=')[1];
   const state = url.searchParams.get('state');
+  // State must match the first-party, host-only cookie set before GitHub authorization.
   const code = url.searchParams.get('code');
   const headers = {
     'Set-Cookie': clearCookie,
