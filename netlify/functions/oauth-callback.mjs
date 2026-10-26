@@ -58,7 +58,24 @@ export default async function handler(request) {
         }
       });
       window.opener.postMessage('authorizing:github', origin);
-    } else document.body.textContent = 'Please return to the CMS login page.';
+    } else if ('BroadcastChannel' in window) {
+      const channel = new BroadcastChannel('nkf-decap-oauth');
+      let attempts = 0;
+      let retry;
+      const send = () => {
+        channel.postMessage({ type: 'oauth-success', message });
+        if (++attempts >= 12) clearInterval(retry);
+      };
+      channel.onmessage = (event) => {
+        if (event.data && event.data.type === 'oauth-received') {
+          clearInterval(retry);
+          document.body.textContent = 'Authorization sent. Return to your original CMS tab.';
+        }
+      };
+      retry = setInterval(send, 800);
+      send();
+      document.body.textContent = 'Authorization completed. Return to your original CMS tab without closing it.';
+    } else document.body.textContent = 'Return to the original CMS tab. This browser does not support cross-tab sign-in.';
   </script></body></html>`;
   return new Response(html, { headers: { ...headers, 'Content-Type': 'text/html; charset=utf-8' } });
 }
