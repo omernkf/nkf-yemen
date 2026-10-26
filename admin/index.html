@@ -1,1 +1,29 @@
-<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>إدارة NKF Yemen</title></head><body><script src="https://unpkg.com/decap-cms@3/dist/decap-cms.js"></script></body></html>
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>إدارة NKF Yemen</title>
+</head>
+<body>
+<script>
+(function () {
+  // Mobile Chrome sometimes opens GitHub authorization in a separate tab,
+  // which removes window.opener. Keep the CMS tab open to receive the result.
+  if (!('BroadcastChannel' in window)) return;
+  const channel = new BroadcastChannel('nkf-decap-oauth');
+  channel.onmessage = (event) => {
+    if (!event.data || event.data.type !== 'oauth-success') return;
+    if (typeof event.data.message !== 'string' ||
+        !event.data.message.startsWith('authorization:github:success:')) return;
+    // Decap's OAuth listener expects a same-origin window message.
+    window.postMessage(event.data.message, window.location.origin);
+    channel.postMessage({type:'oauth-received'});
+  };
+  window.addEventListener('pagehide', () => channel.close());
+})();
+</script>
+<script src="https://unpkg.com/decap-cms@3/dist/decap-cms.js"></script>
+</body>
+</html>
