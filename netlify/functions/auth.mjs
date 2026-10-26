@@ -17,7 +17,7 @@ export default async function handler() {
     status: 302,
     headers: {
       Location: authorizationUrl.toString(),
-      'Set-Cookie': 'nkf_oauth_state=' + state + '; Path=/.netlify/functions; HttpOnly; Secure; SameSite=Lax; Max-Age=600',
+      'Set-Cookie': '__Host-nkf_oauth_state=' + state + '; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=600',
       'Cache-Control': 'no-store'
     }
   });
