@@ -1,12 +1,12 @@
 {
-  "hero_title_ar": "الأمل والرعاية لكل مريض",
-  "hero_title_en": "Hope and Care for Every Patient",
-  "hero_description_ar": "دعم صحة الكلى والرعاية الحيوية في اليمن",
-  "hero_description_en": "Providing critical care and awareness across Yemen.",
-  "hero_image": "/logo.png",
   "impact_enabled": false,
   "dialysis_sessions": 0,
-  "patients_supported": 0,
   "medical_centers": 0,
-  "years_of_service": 0
+  "hero_description_en": "We strive to support people living with kidney failure in Yemen, ease the burden of dialysis, improve access to treatment and kidney transplantation, advocate for patients' rights, and raise awareness of their needs.",
+  "hero_title_en": "Fight against kidney failure ",
+  "years_of_service": 0,
+  "hero_image": "/logo.png",
+  "hero_description_ar": "نسعى إلى مساندة مرضى الفشل الكلوي في اليمن، والتخفيف من معاناتهم وأعباء الغسيل الكلوي، والمساهمة في تحسين فرص حصولهم على العلاج وزراعة الكلى، والدفاع عن حقوقهم وتوعية المجتمع باحتياجاتهم.",
+  "hero_title_ar": "معاً في مواجهة الفشل الكلوي ",
+  "patients_supported": 0
 }
