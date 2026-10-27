@@ -46,6 +46,35 @@ export default async function handler(request) {
   } catch {
     return new Response('GitHub authentication failed. Return to /admin/ and retry.', { status: 502, headers });
   }
+  // Authenticate the GitHub identity before forwarding any access token to Decap.
+  // The owner ID is immutable, unlike the account's display name.
+  // A valid GitHub OAuth token for another user must never grant CMS access.
+  const OWNER_GITHUB_USER_ID = 306806947;
+  let authorized = false;
+  try {
+    const identityResponse = await fetch('https://api.github.com/user', {
+      headers: {
+        'Authorization': 'Bearer ' + accessToken,
+        'Accept': 'application/vnd.github+json',
+        'X-GitHub-Api-Version': '2022-11-28'
+      }
+    });
+    if (identityResponse.ok) {
+      const identity = await identityResponse.json();
+      authorized = identity.id === OWNER_GITHUB_USER_ID &&
+        typeof identity.login === 'string' &&
+        identity.login.toLowerCase() === 'omernkf';
+    }
+  } catch {
+    // Fail closed if GitHub's identity API is unreachable.
+  }
+  if (!authorized) {
+    return new Response('Access denied: this GitHub account is not authorized to manage NKF Yemen.', {
+      status: 403,
+      headers: { ...headers, 'Content-Type': 'text/plain; charset=utf-8' }
+    });
+  }
+
   const message = 'authorization:github:success:' + JSON.stringify({ token: accessToken, provider: 'github' });
   const html = `<!doctype html><html><head><meta charset="utf-8"><meta name="referrer" content="no-referrer"></head><body><p>Completing sign in...</p><script>
     const origin = ${JSON.stringify(ORIGIN)};
