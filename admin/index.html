@@ -11,6 +11,31 @@
 (function () {
   // Mobile Chrome sometimes opens GitHub authorization in a separate tab,
   // which removes window.opener. Keep the CMS tab open to receive the result.
+  // Decap expects a live window.open() handle and calls focus(), postMessage(),
+  // and close() on it during the OAuth handshake. On some mobile browsers the
+  // GitHub authorization navigation severs that handle (COOP), although its
+  // first-party callback can still send the result through BroadcastChannel.
+  // Forward methods when possible, but never let a detached popup handle
+  // interrupt Decap's own successful OAuth callback.
+  const nativeOpen = window.open.bind(window);
+  window.open = function(url, name, features) {
+    const popup = nativeOpen(url, name, features);
+    if (name !== 'Netlify Authorization' || !popup) return popup;
+    return {
+      focus() {
+        try { popup.focus(); } catch (_) { /* detached popup */ }
+      },
+      postMessage(message, origin) {
+        try { if (!popup.closed) popup.postMessage(message, origin); }
+        catch (_) { /* callback uses same-origin BroadcastChannel */ }
+      },
+      close() {
+        try { if (!popup.closed) popup.close(); }
+        catch (_) { /* browser owns detached tab */ }
+      }
+    };
+  };
+
   if (!('BroadcastChannel' in window)) return;
   const channel = new BroadcastChannel('nkf-decap-oauth');
   channel.onmessage = (event) => {
