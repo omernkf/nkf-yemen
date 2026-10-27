@@ -17,9 +17,15 @@
     if (!event.data || event.data.type !== 'oauth-success') return;
     if (typeof event.data.message !== 'string' ||
         !event.data.message.startsWith('authorization:github:success:')) return;
-    // Decap's OAuth listener expects a same-origin window message.
-    window.postMessage(event.data.message, window.location.origin);
-    channel.postMessage({type:'oauth-received'});
+    // Decap waits for an authorizing:github handshake before it listens
+    // for the authorization:github:success response. Forward BOTH messages.
+    // Merely forwarding the success message leaves Decap on its login screen.
+    window.postMessage('authorizing:github', window.location.origin);
+    setTimeout(() => {
+      window.postMessage(event.data.message, window.location.origin);
+      // Acknowledgment only means the message was relayed, not that login succeeded.
+      channel.postMessage({type:'oauth-received'});
+    }, 150);
   };
   window.addEventListener('pagehide', () => channel.close());
 })();
